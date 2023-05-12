@@ -11,12 +11,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <?php if($segment == ''){ ?>
-                    <a href="<?php echo base_url('Home'); ?>" class="nav-item nav-link <?php if($segment == 'Home' || $segment == ''){ ?> active <?php } ?>">Ana səhifə</a>
-                <?php }else{ ?>
-                    <a href="<?php echo base_url('Home'); ?>" class="nav-item nav-link <?php if($segment == 'Home'){ ?> active <?php } ?>">Ana səhifə</a>
-                <?php } ?>
-                
+                <a href="<?php echo base_url('Home'); ?>" class="nav-item nav-link <?php if($segment == 'Home' || $segment == ''){ ?> active <?php } ?>">Ana səhifə</a>
                 <a href="<?php echo base_url('About'); ?>" class="nav-item nav-link <?php if($segment == 'About'){ ?> active <?php } ?>">Haqqımızda</a>
                 <a href="<?php echo base_url('Services'); ?>" class="nav-item nav-link <?php if($segment == 'Services'){ ?> active <?php } ?>">Xidmətlər</a>
               <!--   <a href="price.html" class="nav-item nav-link">Qiymətlər</a> -->

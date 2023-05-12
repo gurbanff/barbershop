@@ -59,8 +59,8 @@ $route['Contact']            = 'User_Controller/contact';
 $route['Login']              = 'Admin_Controller/index';
 $route['Dashboard']          = 'Admin_Controller/dashboard';
 // Product ////////////////////////////////////////////////////////
-$route['List']               = 'Admin_Controller/list';
-$route['Create']             = 'Admin_Controller/create';
+$route['Staff_List']               = 'Admin_Controller/staff_list';
+$route['Staff_Create']             = 'Admin_Controller/staff_create';
 
 
 
