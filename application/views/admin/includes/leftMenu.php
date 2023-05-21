@@ -38,8 +38,8 @@
             </a>
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="<?php echo base_url('List'); ?>">List</a>
-                    <a class="collapse-item" href="<?php echo base_url('Create'); ?>">Create</a>
+                    <a class="collapse-item" href="<?php echo base_url('Staff_List'); ?>">List</a>
+                    <a class="collapse-item" href="<?php echo base_url('Staff_Create'); ?>">Create</a>
                 </div>
             </div>
         </li>

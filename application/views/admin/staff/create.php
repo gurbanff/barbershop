@@ -15,7 +15,7 @@
         <h3 class="text-center text-white bg-primary py-2 rounded">Contact Information</h3>
         <br>
 
-        <form action="<?php echo base_url('a_staff_create_act'); ?>" method="post" enctype="multipart/form-data">
+        <form action="<?php echo base_url('Staff_Create_Act'); ?>" method="post" enctype="multipart/form-data">
 
             <!-- Nav pills -->
             <ul class="nav nav-pills">
@@ -84,13 +84,6 @@
                 </div>
             </div>
 
-
-
-
-
-
-
-
             <div class="form-group">
                 <div class="row">
 
@@ -139,7 +132,7 @@
                 <div class="row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
                         <label for="Telegram"><b>Telegram</b></label>
-                        <input type="text" name="Telegram" class="form-control" id="Telegram" placeholder="https://www.....">
+                        <input type="text" name="Telegram" class="form-control" id="Telegram" placeholder="Telegram">
                     </div>
 
                     <div class="col-sm-6 mb-3 mb-sm-0">
@@ -167,15 +160,20 @@
                         </select>
                     </div>
                     
-                    <div class="col-sm-4 mb-3 mb-sm-0">
+                    <div class="col-sm-4 mb-3 mb-sm-0">Email
                         <label for="Email"><b>Email</b></label>
                         <input type="text" name="Email" class="form-control" id="Email" placeholder="Email">
                     </div>
 
-                    <div class="col-sm-3 mb-3 mb-sm-0">
+                    <div class="col-sm-4 mb-3 mb-sm-0">
+                        <label for="Experience"><b>Experience</b></label>
+                        <input type="text" name="Experience" class="form-control" id="Experience" placeholder="Experience">
+                    </div>
+
+                    <!-- <div class="col-sm-3 mb-3 mb-sm-0">
                         <label for="ProfilePhoto"><b>Profile Photo</b></label>
                         <input type="file" name="file" class="form-control" id="ProfilePhoto">
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <br>
