@@ -20,7 +20,9 @@ class Admin_Controller extends CI_Controller{
 
     public function staff_list()
     {
-        $this->load->view('admin/staff/list');
+        $data['get_all_data'] = $this->db->order_by('s_id', 'DESC')->get('staff')->result_array();
+
+        $this->load->view('admin/staff/list', $data);
     }
 
     public function staff_create()
