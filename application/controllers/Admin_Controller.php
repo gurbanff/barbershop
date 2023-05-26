@@ -4,6 +4,12 @@
 
 class Admin_Controller extends CI_Controller{
 
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('Admin_Model');
+    }
+
     public function index()
     {
         $this->load->view('admin/login');
@@ -20,7 +26,7 @@ class Admin_Controller extends CI_Controller{
 
     public function staff_list()
     {
-        $data['get_all_data'] = $this->db->order_by('s_id', 'DESC')->get('staff')->result_array();
+        $data['get_all_data'] = $this->Admin_Model->get_all_data();
 
         $this->load->view('admin/staff/list', $data);
     }
@@ -84,7 +90,7 @@ class Admin_Controller extends CI_Controller{
                 's_create_id'       => "",
             ];
 
-            $this->db->insert('staff', $data);
+            $this->Admin_Model->insert_staff($data);
             redirect(base_url('Staff_List'));
 
         }else{
