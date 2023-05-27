@@ -62,6 +62,7 @@ $route['Dashboard']          = 'Admin_Controller/dashboard';
 $route['Staff_List']               = 'Admin_Controller/staff_list';
 $route['Staff_Create']             = 'Admin_Controller/staff_create';
 $route['Staff_Create_Act']         = 'Admin_Controller/staff_create_act';
+$route['Staff_Details/(.*)']       = 'Admin_Controller/staff_details/$1';
 
 
 

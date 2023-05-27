@@ -7,7 +7,11 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Staff Create</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Staff Create
+        <a href="<?php echo base_url('Staff_List'); ?>">
+            <button style="float: right;" type="button" class="btn btn-primary">Back</button>
+        </a>
+        </h6>
     </div>
     <div class="card-body">
 

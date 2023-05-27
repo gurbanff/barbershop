@@ -58,6 +58,7 @@ class Admin_Controller extends CI_Controller{
         $mobile             = $_POST['mobile'];
         $whatsApp           = $_POST['WhatsApp'];
         $facebook           = $_POST['Facebook'];
+        $instagram          = $_POST['Instagram'];
         $telegram           = $_POST['Telegram'];
         $youtube            = $_POST['Youtube'];
 
@@ -84,6 +85,7 @@ class Admin_Controller extends CI_Controller{
                 's_mobile'          => $mobile,
                 's_whatsApp'        => $whatsApp,
                 's_facebook'        => $facebook,
+                's_instagram'       => $instagram,
                 's_telegram'        => $telegram,
                 's_youtube'         => $youtube,
                 's_create_date'     => date("Y-m-d H:i:s"),
@@ -96,6 +98,13 @@ class Admin_Controller extends CI_Controller{
         }else{
             redirect($_SERVER['HTTP_REFERER']);
         }
+    }
+
+    public function staff_details($id)
+    {
+        $data['single_data'] = $this->Admin_Model->get_single_staff($id);
+        
+        $this->load->view('admin/staff/details', $data);
     }
 
     
