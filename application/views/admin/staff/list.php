@@ -58,7 +58,7 @@
                                                 <td><?php echo $item['s_status']; ?></td>
                                                 <td>
                                                     <?php if($item['s_img']){ ?>
-                                                        <img width="50px" height="50px" style="object-fit: cover;" src="<?php #echo base_url('uploads/admin/staff/'.$item['s_img']) ?>" />
+                                                        <img width="50px" height="50px" style="object-fit: cover;" src="<?php echo base_url('uploads/admin/staff/'.$item['s_img']) ?>" />
                                                     <?php }else{ ?>
                                                         <img width="50px" height="50px" style="object-fit: cover;" src="<?php echo base_url('uploads/admin/staff/noimage.png'); ?>" />
                                                     <?php } ?>
@@ -69,12 +69,12 @@
                                                             <i class="fas fa-fw fa-eye"></i>
                                                         </button>
                                                     </a>
-                                                    <a href="#" style="text-decoration: none;">
+                                                    <a href="<?php echo base_url('Staff_Edit/'.$item['s_id']); ?>" style="text-decoration: none;">
                                                         <button type="button" title="Update" class="btn btn-warning">
                                                             <i class="fas fa-fw fa-pen"></i>
                                                         </button>
                                                     </a>
-                                                    <a href="#" style="text-decoration: none;">
+                                                    <a onclick="return confirm('Silmek istediyinize Eminsiz?')" href="<?php echo base_url('Staff_Delete/'.$item['s_id']); ?>" style="text-decoration: none;">
                                                         <button type="button" title="Delete" class="btn btn-danger">
                                                             <i class="fas fa-fw fa-trash"></i>
                                                         </button>

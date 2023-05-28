@@ -174,10 +174,10 @@
                         <input type="text" name="Experience" class="form-control" id="Experience" placeholder="Experience">
                     </div>
 
-                    <!-- <div class="col-sm-3 mb-3 mb-sm-0">
+                    <div class="col-sm-3 mb-3 mb-sm-0">
                         <label for="ProfilePhoto"><b>Profile Photo</b></label>
                         <input type="file" name="file" class="form-control" id="ProfilePhoto">
-                    </div> -->
+                    </div>
                 </div>
             </div>
             <br>

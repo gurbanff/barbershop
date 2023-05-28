@@ -63,6 +63,9 @@ $route['Staff_List']               = 'Admin_Controller/staff_list';
 $route['Staff_Create']             = 'Admin_Controller/staff_create';
 $route['Staff_Create_Act']         = 'Admin_Controller/staff_create_act';
 $route['Staff_Details/(.*)']       = 'Admin_Controller/staff_details/$1';
+$route['Staff_Delete/(.*)']        = 'Admin_Controller/staff_delete/$1';
+$route['Staff_Edit/(.*)']          = 'Admin_Controller/staff_edit/$1';
+$route['Staff_Edit_Act/(.*)']      = 'Admin_Controller/staff_edit_act/$1';
 
 
 
