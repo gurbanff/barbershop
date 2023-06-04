@@ -64,6 +64,8 @@ $route['Navbar_List']              = 'Admin_Controller/navbar_list';
 $route['Navbar_Create']            = 'Admin_Controller/navbar_create';
 $route['Navbar_Create_Act']        = 'Admin_Controller/navbar_create_act';
 $route['Navbar_Delete/(.*)']       = 'Admin_Controller/navbar_delete/$1';
+$route['Navbar_Edit/(.*)']         = 'Admin_Controller/navbar_edit/$1';
+$route['Navbar_Edit_Act/(.*)']     = 'Admin_Controller/navbar_edit_act/$1';
 // Product ////////////////////////////////////////////////////////
 $route['Staff_List']               = 'Admin_Controller/staff_list';
 $route['Staff_Create']             = 'Admin_Controller/staff_create';

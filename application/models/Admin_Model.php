@@ -49,4 +49,14 @@ class Admin_Model extends CI_Model{
         $this->db->where("id", $id)->delete('navbar');
     }
 
+    public function get_single_nav($id)
+    {
+        return $this->db->where('id', $id)->get('navbar')->row_array();
+    }
+
+    public function nav_update($id, $data)
+    {
+        $this->db->where('id', $id)->update('navbar', $data);
+    }
+
 }

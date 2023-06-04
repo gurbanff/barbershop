@@ -100,6 +100,37 @@ class Admin_Controller extends CI_Controller{
         redirect(base_url('Navbar_List'));
     }
 
+    public function navbar_edit($id)
+    {
+        $data['nav_all_data'] = $this->Admin_Model->get_single_nav($id);
+
+        $this->load->view('admin/navbar/update', $data);
+    }
+
+    public function navbar_edit_act($id)
+    {
+        $nav_name   = $_POST['nav_name'];
+        $nav_a_href = $_POST['nav_a_href'];
+
+        if(!empty($nav_name) && !empty($nav_a_href)){
+
+            $data = [
+                "nav_name"      => $nav_name,
+                "nav_a_href"    => $nav_a_href
+            ];
+
+            $id = $this->security->xss_clean($id);
+            $data = $this->security->xss_clean($data);
+
+            $this->Admin_Model->nav_update($id, $data);
+            redirect(base_url('Navbar_List'));
+
+        }else{
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+
+    }
+
     public function dashboard()
     {
         $this->load->view('admin/index');

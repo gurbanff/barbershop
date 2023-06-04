@@ -37,7 +37,7 @@
                                                             <i class="fas fa-fw fa-eye"></i>
                                                         </button>
                                                     </a>
-                                                    <a href="<?php #echo base_url('Staff_Edit/'.$item['s_id']); ?>" style="text-decoration: none;">
+                                                    <a href="<?php echo base_url('Navbar_Edit/'.$item['id']); ?>" style="text-decoration: none;">
                                                         <button type="button" title="Update" class="btn btn-warning">
                                                             <i class="fas fa-fw fa-pen"></i>
                                                         </button>
