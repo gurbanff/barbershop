@@ -49,15 +49,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'User_Controller';
-$route['Home']               = 'User_Controller/index';
-$route['About']              = 'User_Controller/about';
-$route['Services']           = 'User_Controller/services';
-$route['Gallery']            = 'User_Controller/gallery';
-$route['Contact']            = 'User_Controller/contact';
+$route['default_controller']       = 'User_Controller/z';
+$route['Home']                     = 'User_Controller/index';
+$route['About']                    = 'User_Controller/about';
+$route['Services']                 = 'User_Controller/services';
+$route['Gallery']                  = 'User_Controller/gallery';
+$route['Contact']                  = 'User_Controller/contact';
 // Admin Controller ////////////////////////////////////////////////
-$route['Login']              = 'Admin_Controller/index';
-$route['Dashboard']          = 'Admin_Controller/dashboard';
+$route['Login']                    = 'Admin_Controller/index';
+$route['Login_Act']                = 'Admin_Controller/login_act';
+$route['Login_Out']                = 'Admin_Controller/log_out';
+$route['Dashboard']                = 'Admin_Controller/dashboard';
+$route['Navbar_List']              = 'Admin_Controller/navbar_list';
+$route['Navbar_Create']            = 'Admin_Controller/navbar_create';
+$route['Navbar_Create_Act']        = 'Admin_Controller/navbar_create_act';
+$route['Navbar_Delete/(.*)']       = 'Admin_Controller/navbar_delete/$1';
 // Product ////////////////////////////////////////////////////////
 $route['Staff_List']               = 'Admin_Controller/staff_list';
 $route['Staff_Create']             = 'Admin_Controller/staff_create';
@@ -66,6 +72,9 @@ $route['Staff_Details/(.*)']       = 'Admin_Controller/staff_details/$1';
 $route['Staff_Delete/(.*)']        = 'Admin_Controller/staff_delete/$1';
 $route['Staff_Edit/(.*)']          = 'Admin_Controller/staff_edit/$1';
 $route['Staff_Edit_Act/(.*)']      = 'Admin_Controller/staff_edit_act/$1';
+// Carousel /////////////////////////////////////////////////////////////
+$route['Carousel_List']            = 'Admin_Controller/carousel_list';
+$route['Carousel_List']            = 'Admin_Controller/carousel_list';
 
 
 

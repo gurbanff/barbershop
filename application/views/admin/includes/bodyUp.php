@@ -1,3 +1,9 @@
+<?php if(!($this->session->userdata("first_name")) && !($this->session->userdata('sur_name')) && !($this->session->userdata("img_up"))){
+    $this->session->set_flashdata('flash_err', 'Error! Wrong Artisliy eleme!');
+    redirect(base_url('Login'));
+}
+
+?>
 <?php $directory = base_url('public/admin/assets/'); ?>
 <!DOCTYPE html>
 <html lang="en">

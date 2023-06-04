@@ -15,7 +15,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -63,7 +63,7 @@
                                                         <img width="50px" height="50px" style="object-fit: cover;" src="<?php echo base_url('uploads/admin/staff/noimage.png'); ?>" />
                                                     <?php } ?>
                                                 </td>
-                                                <td>
+                                                <td style="width: 200px !important;">
                                                 <a href="<?php echo base_url('Staff_Details/'.$item['s_id']); ?>" style="text-decoration: none;">
                                                         <button type="button" title="View" class="btn btn-success">
                                                             <i class="fas fa-fw fa-eye"></i>

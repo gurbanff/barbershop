@@ -29,4 +29,24 @@ class Admin_Model extends CI_Model{
         $this->db->where('s_id', $id)->update('staff', $data);
     }
 
+    public function select_admin_login($data)
+    {
+        return $this->db->where($data)->get('admin')->row_array();
+    }
+
+    public function insert_nav($data)
+    {
+        $this->db->insert('navbar', $data);
+    }
+
+    public function get_all_nav()
+    {
+        return $this->db->get('navbar')->result_array();
+    }
+
+    public function delete_nav($id)
+    {
+        $this->db->where("id", $id)->delete('navbar');
+    }
+
 }

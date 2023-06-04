@@ -1,6 +1,6 @@
 <?php $directory = base_url('public/admin/assets/'); ?>
 <!-- Bootstrap core JavaScript-->
-<script src="<?php echo $directory ?>vendor/jquery/jquery.min.js"></script>
+<script src="<?php echo $directory."vendor/jquery/jquery.min.js" ?>"></script>
 <script src="<?php echo $directory ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->

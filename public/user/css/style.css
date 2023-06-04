@@ -15,6 +15,10 @@
     border-color: #D7B56D !important;
 }
 
+.team-item{
+    width: calc(100% + 1px);
+}
+
 
 /*** Spinner ***/
 #spinner {

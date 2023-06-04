@@ -3,7 +3,7 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php base_url('Dashboard'); ?>">
@@ -40,6 +40,20 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <a class="collapse-item" href="<?php echo base_url('Staff_List'); ?>">List</a>
                     <a class="collapse-item" href="<?php echo base_url('Staff_Create'); ?>">Create</a>
+                </div>
+            </div>
+        </li>
+        <hr class="sidebar-divider d-none d-md-block">
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#carousel"
+                aria-expanded="true" aria-controls="carousel">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Navbar</span>
+            </a>
+            <div id="carousel" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="<?php echo base_url('Navbar_List'); ?>">List</a>
+                    <a class="collapse-item" href="<?php echo base_url('Navbar_Create'); ?>">Create</a>
                 </div>
             </div>
         </li>

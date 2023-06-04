@@ -17,6 +17,87 @@ class Admin_Controller extends CI_Controller{
 
     public function login_act()
     {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        if(!empty($username) && !empty($password)){
+
+            $data = [
+                "username" => $username,
+                "password" => md5($password)
+            ];
+
+            $selectLogin = $this->Admin_Model->select_admin_login($data);
+
+            // print_r("<pre>");
+            // print_r($selectLogin);
+            // die();
+            if($selectLogin){
+                $this->session->set_userdata("first_name", $selectLogin['name']);
+                $this->session->set_userdata("sur_name", $selectLogin['surname']);
+                $this->session->set_userdata("prof_img", $selectLogin['img_up']);
+                redirect(base_url('Dashboard'));
+            }else{
+                $this->session->set_flashdata("flash_err", "Error! Wrong Username ve ya sifre sehvdir!");
+                redirect($_SERVER['HTTP_REFERER']);
+            }
+        }else{
+            $this->session->set_flashdata("flash_err", "Error! Boslug buraxmayin!");
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function log_out()
+    {
+        $this->session->unset_userdata("first_name");
+        $this->session->unset_userdata("sur_name");
+        $this->session->unset_userdata("img_up");
+        $this->session->set_flashdata("flash_out_succ", "Bir daha sizi gozleyirik!");
+        redirect(base_url("Login"));
+        
+    }
+
+    public function navbar_list()
+    {
+        $data['get_all_nav'] = $this->Admin_Model->get_all_nav();
+
+        $this->load->view('admin/navbar/list', $data);
+    }
+
+    public function navbar_create()
+    {
+        $this->load->view('admin/navbar/create');
+    }
+
+    public function navbar_create_act()
+    {
+        $nav_name   = $_POST['nav_name'];
+        $nav_a_href = $_POST['nav_a_href'];
+
+        if(!empty($nav_name) && !empty($nav_a_href)){
+
+            $data = [
+                "nav_name"   => $nav_name,
+                "nav_a_href" => $nav_a_href
+            ];
+
+            $data = $this->security->xss_clean($data);
+
+            $this->Admin_Model->insert_nav($data);
+            redirect(base_url('Navbar_List'));
+
+        }else{
+
+            redirect($_SERVER['HTTP_REFERER']);
+
+        }
+
+    }
+
+    public function navbar_delete($id)
+    {
+        $this->Admin_Model->delete_nav($id);
+        redirect(base_url('Navbar_List'));
     }
 
     public function dashboard()
@@ -139,6 +220,8 @@ class Admin_Controller extends CI_Controller{
 
             }
 
+            $data = $this->security->xss_clean($data);
+
             $this->Admin_Model->insert_staff($data);
             redirect(base_url('Staff_List'));
 
@@ -169,6 +252,7 @@ class Admin_Controller extends CI_Controller{
 
     public function staff_edit_act($id)
     {
+    
         $firstName_az       = $_POST['FirstName_az'];
         $lastName_az        = $_POST['LastName_az'];
         $description_az     = $_POST['user_description_az'];
@@ -270,6 +354,9 @@ class Admin_Controller extends CI_Controller{
 
             }
 
+            $id = $this->security->xss_clean($id);
+            $data = $this->security->xss_clean($data);
+
             $this->Admin_Model->staff_update($id, $data);
             redirect(base_url('Staff_List'));
 
@@ -277,6 +364,12 @@ class Admin_Controller extends CI_Controller{
             redirect($_SERVER['HTTP_REFERER']);
         }
     }
+
+// Carousel////////////////////////////////////
+    // public function carousel_list()
+    // {
+    //     $this->load->view('admin/carousel/list');
+    // }
 
 
 }

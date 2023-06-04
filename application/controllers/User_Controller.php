@@ -4,24 +4,41 @@
 
 class User_Controller extends CI_Controller {
 
+    public function __construct()
+    {
+        parent::__construct();
+        
+        $this->load->model("User_Model");
+    }
+
+    public function z(){
+        redirect(base_url('Home'));
+    }
+
     public function index(){
-        $this->load->view('user/index');
+        $data['staff_all_data'] = $this->User_Model->staff_all_data();
+        $data['nav_all_data']   = $this->User_Model->nav_all_data();
+        $this->load->view('user/index', $data);
     }
 
     public function about(){
-        $this->load->view('user/about');
+        $data['nav_all_data']   = $this->User_Model->nav_all_data();
+        $this->load->view('user/about', $data);
     }
 
     public function services(){
-        $this->load->view('user/service');
+        $data['nav_all_data']   = $this->User_Model->nav_all_data();
+        $this->load->view('user/service', $data);
     }
 
     public function gallery(){
-        $this->load->view('user/gallery');
+        $data['nav_all_data']   = $this->User_Model->nav_all_data();
+        $this->load->view('user/gallery', $data);
     }
 
     public function contact(){
-        $this->load->view('user/contact');
+        $data['nav_all_data']   = $this->User_Model->nav_all_data();
+        $this->load->view('user/contact', $data);
     }
 
 }

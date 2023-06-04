@@ -95,11 +95,8 @@
                         <label for="Position"><b>Position</b></label>
                         <select name="position" id="Position" class="form-control">
                             <option value="">-SELECT-</option>
-                            <option value="Director">Director</option>
-                            <option value="Manager">Manager</option>
-                            <option value="Master">Master</option>
-                            <option value="Asistent">Asistent</option>
-                            <option value="Other">Other</option>
+                            <option value="Usta">Usta</option>
+                            <option value="Çırak">Çırak</option>
                         </select>
                     </div>
                     <div class="col-sm-4 mb-3 mb-sm-0">

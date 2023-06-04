@@ -11,13 +11,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="<?php echo base_url('Home'); ?>" class="nav-item nav-link <?php if($segment == 'Home' || $segment == ''){ ?> active <?php } ?>">Ana səhifə</a>
-                <a href="<?php echo base_url('About'); ?>" class="nav-item nav-link <?php if($segment == 'About'){ ?> active <?php } ?>">Haqqımızda</a>
-                <a href="<?php echo base_url('Services'); ?>" class="nav-item nav-link <?php if($segment == 'Services'){ ?> active <?php } ?>">Xidmətlər</a>
-              <!--   <a href="price.html" class="nav-item nav-link">Qiymətlər</a> -->
-                <!-- <a href="team.html" class="nav-item nav-link">Ustalar</a> -->
-                <a href="<?php echo base_url('Gallery'); ?>" class="nav-item nav-link <?php if($segment == 'Gallery'){ ?> active <?php } ?>">Qalereya</a>
-                <a href="<?php echo base_url('Contact'); ?>" class="nav-item nav-link <?php if($segment == 'Contact'){ ?> active <?php } ?>">Əlaqə</a>
+                <?php foreach($nav_all_data as $item){ ?>
+                    <a href="<?php echo base_url($item['nav_a_href']); ?>" class="nav-item nav-link <?php if(strtolower($segment) == strtolower($item['nav_a_href'])) { ?> active <?php } ?>"><?php echo $item['nav_name']; ?></a>
+                <?php } ?>
             </div>
         </div>
     </nav>
