@@ -17,4 +17,8 @@ class User_Model extends CI_Model{
         return $this->db->limit(6)->get('navbar')->result_array();
     }
 
+    public function navlogo_get_img() {
+        return $this->db->limit(1)->get('navbar_logo')->result_array();
+    }
+
 }

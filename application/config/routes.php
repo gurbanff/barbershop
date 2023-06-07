@@ -60,12 +60,17 @@ $route['Login']                    = 'Admin_Controller/index';
 $route['Login_Act']                = 'Admin_Controller/login_act';
 $route['Login_Out']                = 'Admin_Controller/log_out';
 $route['Dashboard']                = 'Admin_Controller/dashboard';
+// Navbar   
 $route['Navbar_List']              = 'Admin_Controller/navbar_list';
 $route['Navbar_Create']            = 'Admin_Controller/navbar_create';
 $route['Navbar_Create_Act']        = 'Admin_Controller/navbar_create_act';
 $route['Navbar_Delete/(.*)']       = 'Admin_Controller/navbar_delete/$1';
 $route['Navbar_Edit/(.*)']         = 'Admin_Controller/navbar_edit/$1';
 $route['Navbar_Edit_Act/(.*)']     = 'Admin_Controller/navbar_edit_act/$1';
+$route['Nav_Logo_Create']          = 'Admin_Controller/nav_logo_create';
+$route['Nav_Logo_Create_Act']      = 'Admin_Controller/nav_logo_create_act';
+$route['Nav_Logo_Edit']            = 'Admin_Controller/nav_logo_edit';
+$route['Nav_Logo_Edit_Act']        = 'Admin_Controller/nav_logo_edit_act';
 // Product ////////////////////////////////////////////////////////
 $route['Staff_List']               = 'Admin_Controller/staff_list';
 $route['Staff_Create']             = 'Admin_Controller/staff_create';

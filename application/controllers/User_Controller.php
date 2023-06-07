@@ -16,28 +16,33 @@ class User_Controller extends CI_Controller {
     }
 
     public function index(){
-        $data['staff_all_data'] = $this->User_Model->staff_all_data();
-        $data['nav_all_data']   = $this->User_Model->nav_all_data();
+        $data['staff_all_data']         = $this->User_Model->staff_all_data();
+        $data['nav_all_data']           = $this->User_Model->nav_all_data();
+        $data['nav_logo_all_data']      = $this->User_Model->navlogo_get_img();
         $this->load->view('user/index', $data);
     }
 
     public function about(){
-        $data['nav_all_data']   = $this->User_Model->nav_all_data();
+        $data['nav_all_data']           = $this->User_Model->nav_all_data();
+        $data['nav_logo_all_data']      = $this->User_Model->navlogo_get_img();
         $this->load->view('user/about', $data);
     }
 
     public function services(){
-        $data['nav_all_data']   = $this->User_Model->nav_all_data();
+        $data['nav_all_data']           = $this->User_Model->nav_all_data();
+        $data['nav_logo_all_data']      = $this->User_Model->navlogo_get_img();
         $this->load->view('user/service', $data);
     }
 
     public function gallery(){
-        $data['nav_all_data']   = $this->User_Model->nav_all_data();
+        $data['nav_all_data']           = $this->User_Model->nav_all_data();
+        $data['nav_logo_all_data']      = $this->User_Model->navlogo_get_img();
         $this->load->view('user/gallery', $data);
     }
 
     public function contact(){
-        $data['nav_all_data']   = $this->User_Model->nav_all_data();
+        $data['nav_all_data']           = $this->User_Model->nav_all_data();
+        $data['nav_logo_all_data']      = $this->User_Model->navlogo_get_img();
         $this->load->view('user/contact', $data);
     }
 
