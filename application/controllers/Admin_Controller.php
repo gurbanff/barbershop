@@ -30,9 +30,6 @@ class Admin_Controller extends CI_Controller
 
             $selectLogin = $this->Admin_Model->select_admin_login($data);
 
-            // print_r("<pre>");
-            // print_r($selectLogin);
-            // die();
             if ($selectLogin) {
                 $this->session->set_userdata("first_name", $selectLogin['name']);
                 $this->session->set_userdata("sur_name", $selectLogin['surname']);
@@ -102,9 +99,9 @@ class Admin_Controller extends CI_Controller
         redirect(base_url('Navbar_List'));
     }
 
-    public function navbar_edit()
+    public function navbar_edit($id)
     {
-        $data['nav_all_data'] = $this->Admin_Model->get_single_nav();
+        $data['nav_all_data'] = $this->Admin_Model->get_single_nav($id);
 
         $this->load->view('admin/navbar/update', $data);
     }
@@ -135,7 +132,6 @@ class Admin_Controller extends CI_Controller
 
     public function nav_logo_create()
     {
-        // $this->load->view('admin/navbar/logo_create');
         $ifCreateAct = $this->Admin_Model->xl_return_rows("navbar_logo", "id");
         if ($ifCreateAct == (-1)) {
             $this->load->view('admin/navbar/logo_create');
@@ -157,7 +153,7 @@ class Admin_Controller extends CI_Controller
             if (!empty($img_href)) {
 
                 $config['upload_path'] = './uploads/admin/navbar/';
-                $config['allowed_types'] = 'gif|jpg|png|jpeg|JPG|JPEG|PDF|mp3|mp4';
+                $config['allowed_types'] = 'png|svg';
                 $config['remove_spaces'] = TRUE;
                 $config['file_ext_tolower'] = TRUE;
                 $config['encrypt_name'] = TRUE;
@@ -165,7 +161,7 @@ class Admin_Controller extends CI_Controller
                 $this->load->library('upload', $config);
 
                 if ($this->upload->do_upload('file')) {
-
+    
                     $img = $this->upload->data();
 
                     $data = [
@@ -209,7 +205,7 @@ class Admin_Controller extends CI_Controller
             if (!empty($img_href)) {
 
                 $config['upload_path'] = './uploads/admin/navbar/';
-                $config['allowed_types'] = 'gif|jpg|png|jpeg|JPG|JPEG|PDF|mp3|mp4';
+                $config['allowed_types'] = 'png|svg';
                 $config['remove_spaces'] = TRUE;
                 $config['file_ext_tolower'] = TRUE;
                 $config['encrypt_name'] = TRUE;
@@ -503,6 +499,48 @@ class Admin_Controller extends CI_Controller
         } else {
             redirect($_SERVER['HTTP_REFERER']);
         }
+    }
+
+    public function slider_list() {
+
+        $this->load->view('admin/slider/list');
+
+    }
+
+    public function slider_create() {
+
+        $ifCreateAct = $this->Admin_Model->xl_return_rows("slider_video_text", "id");
+        if($ifCreateAct == (-1)) {
+            $this->load->view('admin/slider/slider_create');
+        }else {
+            redirect(base_url('Slider_Edit'));
+        }
+
+    }
+
+    public function slider_create_act() {
+
+        $h1_text_slider = $_POST['h1_text'];
+
+        if (!empty($h1_text_slider)){
+
+            $config['upload_path'] = './uploads/admin/slider/';
+            $config['allowed_types'] = 'mp4';
+            $config['remove_spaces'] = TRUE;
+            $config['file_ext_tolower'] = TRUE;
+            $config['encrypt_name'] = TRUE;
+            $this->upload->initialize($config);
+
+        } else{
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+
+    }
+
+    public function slider_text_create() {
+
+        $this->load->view('admin/slider/slider_text_create');
+
     }
 
 

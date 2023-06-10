@@ -31,22 +31,8 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                aria-expanded="true" aria-controls="collapsePages">
-                <i class="fas fa-fw fa-folder"></i>
-                <span>Staff</span>
-            </a>
-            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="<?php echo base_url('Staff_List'); ?>">List</a>
-                    <a class="collapse-item" href="<?php echo base_url('Staff_Create'); ?>">Create</a>
-                </div>
-            </div>
-        </li>
-        <hr class="sidebar-divider d-none d-md-block">
-        <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#carousel"
-                aria-expanded="true" aria-controls="carousel">
+               aria-expanded="true" aria-controls="carousel">
                 <i class="fas fa-fw fa-folder"></i>
                 <span>Navbar</span>
             </a>
@@ -57,6 +43,35 @@
                 </div>
             </div>
         </li>
+        <hr class="sidebar-divider d-none d-md-block">
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#slider"
+               aria-expanded="true" aria-controls="carousel">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Slider</span>
+            </a>
+            <div id="slider" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="<?php echo base_url('Slider_List'); ?>">List</a>
+                    <a class="collapse-item" href="<?php echo base_url('#'); ?>">Create</a>
+                </div>
+            </div>
+        </li>
+        <hr class="sidebar-divider d-none d-md-block">
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+               aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Staff</span>
+            </a>
+            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="<?php echo base_url('Staff_List'); ?>">List</a>
+                    <a class="collapse-item" href="<?php echo base_url('Staff_Create'); ?>">Create</a>
+                </div>
+            </div>
+        </li>
+
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">

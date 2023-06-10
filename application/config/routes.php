@@ -71,6 +71,10 @@ $route['Nav_Logo_Create']          = 'Admin_Controller/nav_logo_create';
 $route['Nav_Logo_Create_Act']      = 'Admin_Controller/nav_logo_create_act';
 $route['Nav_Logo_Edit']            = 'Admin_Controller/nav_logo_edit';
 $route['Nav_Logo_Edit_Act']        = 'Admin_Controller/nav_logo_edit_act';
+// Slider List
+$route['Slider_List']              = 'Admin_Controller/slider_list';
+$route['Slider_Create']            = 'Admin_Controller/slider_create';
+$route['Slider_Text_Create']       = 'Admin_Controller/slider_text_create';
 // Product ////////////////////////////////////////////////////////
 $route['Staff_List']               = 'Admin_Controller/staff_list';
 $route['Staff_Create']             = 'Admin_Controller/staff_create';
