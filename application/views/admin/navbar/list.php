@@ -53,7 +53,7 @@
                                                             <i class="fas fa-fw fa-pen"></i>
                                                         </button>
                                                     </a>
-                                                    <a onclick="return confirm('Silmek istediyinize Eminsiz?')" href="<?php #echo base_url('Navbar_Delete/'.$item['id']); ?>" style="text-decoration: none;">
+                                                    <a onclick="return confirm('Silmek istediyinize Eminsiz?')" href="<?php echo base_url('Nav_Logo_Delete'); ?>" style="text-decoration: none;">
                                                         <button type="button" title="Delete" class="btn btn-danger">
                                                             <i class="fas fa-fw fa-trash"></i>
                                                         </button>

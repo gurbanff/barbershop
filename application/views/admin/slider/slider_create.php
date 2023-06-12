@@ -7,7 +7,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Staff Video and Text(h1) Create
-                <a href="<?php echo base_url('Staff_List'); ?>">
+                <a href="<?php echo base_url('Slider_List'); ?>">
                     <button style="float: right;" type="button" class="btn btn-primary">Back</button>
                 </a>
             </h6>
@@ -18,7 +18,7 @@
             <h3 class="text-center text-white bg-primary py-2 rounded">Slider Video and H1 Text Create</h3>
             <br>
 
-            <form action="<?php echo base_url('#'); ?>" method="post" enctype="multipart/form-data">
+            <form action="<?php echo base_url('Slider_Create_Act'); ?>" method="post" enctype="multipart/form-data">
 
                 <!-- Tab panes -->
                 <div class="tab-content">

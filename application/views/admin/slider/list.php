@@ -28,17 +28,17 @@
                 </thead>
                 <tbody>
 
-                <?php #$say = 0; foreach($get_all_data as $item){ $say++ ?>
+                <?php $say = 0; foreach($slider_get_all_data as $item){ $say++ ?>
 
                 <tr>
 
                     <td style="width: 200px !important;">
-                        <a href="<?php #echo base_url('Staff_Details/'.$item['s_id']); ?>" style="text-decoration: none;">
-                            <button type="button" title="View" class="btn btn-success">
+                        <a style="text-decoration: none;">
+                            <button type="button" title="View" class="btn btn-success" disabled>
                                 <i class="fas fa-fw fa-eye"></i>
                             </button>
                         </a>
-                        <a href="<?php #echo base_url('Staff_Edit/'.$item['s_id']); ?>" style="text-decoration: none;">
+                        <a href="<?php echo base_url('Slider_Edit'); ?>" style="text-decoration: none;">
                             <button type="button" title="Update" class="btn btn-warning">
                                 <i class="fas fa-fw fa-pen"></i>
                             </button>
@@ -52,7 +52,7 @@
                     </td>
                 </tr>
 
-                <?php #} ?>
+                <?php } ?>
 
                 </tbody>
             </table>

@@ -181,7 +181,7 @@
             </div>
             <br>
 
-            <button type="submit" class="btn btn-success">Update</button>
+            <button type="submit" class="btn btn-outline-success">Update</button>
 
 
         </form>

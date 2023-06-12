@@ -151,14 +151,12 @@ class Admin_Controller extends CI_Controller
             $img_href = $_POST['href'];
 
             if (!empty($img_href)) {
-
-                $config['upload_path'] = './uploads/admin/navbar/';
-                $config['allowed_types'] = 'png|svg';
-                $config['remove_spaces'] = TRUE;
+                $config['upload_path']      = './uploads/admin/navbar/';
+                $config['allowed_types']    = 'png|svg';
+                $config['remove_spaces']    = TRUE;
                 $config['file_ext_tolower'] = TRUE;
-                $config['encrypt_name'] = TRUE;
-
-                $this->load->library('upload', $config);
+                $config['encrypt_name']     = TRUE;
+                $this->upload->initialize($config);
 
                 if ($this->upload->do_upload('file')) {
     
@@ -200,24 +198,23 @@ class Admin_Controller extends CI_Controller
 
     public function nav_logo_edit_act()
     {
-        $img_href = $_POST['href'];
+        $img_href = $_POST['file_href'];
 
             if (!empty($img_href)) {
 
-                $config['upload_path'] = './uploads/admin/navbar/';
-                $config['allowed_types'] = 'png|svg';
-                $config['remove_spaces'] = TRUE;
+                $config['upload_path']      = './uploads/admin/navbar/';
+                $config['allowed_types']    = 'png|svg';
+                $config['remove_spaces']    = TRUE;
                 $config['file_ext_tolower'] = TRUE;
-                $config['encrypt_name'] = TRUE;
-
+                $config['encrypt_name']     = TRUE;
                 $this->load->library('upload', $config);
 
-                if ($this->upload->do_upload('file')) {
+                if ($this->upload->do_upload('user')) {
 
                     $img = $this->upload->data();
 
                     $data = [
-                        "file" => $img['file_name'],
+                        "file" => $img['file_name'], // Input lari bow gonderme, cunki yeniden seni edite gonderecek.
                         "file_href" => $img_href
                     ];
 
@@ -234,6 +231,12 @@ class Admin_Controller extends CI_Controller
                 redirect($_SERVER['HTTP_REFERER']);
             }
 
+    }
+
+    public function nav_logo_delete() {
+
+        $this->Admin_Model->a_nav_logo_delete($this->Admin_Model->xl_return_rows("navbar_logo", "id"));
+        redirect(base_url('Nav_Logo_Create'));
     }
 
     public function dashboard()
@@ -503,7 +506,8 @@ class Admin_Controller extends CI_Controller
 
     public function slider_list() {
 
-        $this->load->view('admin/slider/list');
+        $data['slider_get_all_data'] = $this->db->get('slider_video_text')->result_array();
+        $this->load->view('admin/slider/list', $data);
 
     }
 
@@ -524,12 +528,78 @@ class Admin_Controller extends CI_Controller
 
         if (!empty($h1_text_slider)){
 
-            $config['upload_path'] = './uploads/admin/slider/';
-            $config['allowed_types'] = 'mp4';
-            $config['remove_spaces'] = TRUE;
+            $config['upload_path']      = './uploads/admin/slider/';
+            $config['allowed_types']    = 'mp4';
+            $config['remove_spaces']    = TRUE;
             $config['file_ext_tolower'] = TRUE;
-            $config['encrypt_name'] = TRUE;
+            $config['encrypt_name']     = TRUE;
             $this->upload->initialize($config);
+
+            if ($this->upload->do_upload('file')) {
+
+                $img = $this->upload->data();
+
+                $data = [
+                  "h1_text" => $h1_text_slider,
+                  "file"    => $img['file_name']
+                ];
+
+                $data_xss_cleaned = $this->security->xss_clean($data);
+
+                $this->Admin_Model->a_slider_create($data_xss_cleaned);
+                redirect(base_url(Slider_List));
+
+            } else{
+                redirect(base_url(Slider_Create));
+            }
+
+        } else{
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+
+    }
+
+    public function slider_edit() {
+        $ifCreateAct = $this->Admin_Model->xl_return_rows("slider_video_text", "id");
+        if ($ifCreateAct == (-1)) {
+            redirect(base_url('Slider_Create'));
+        } else {
+            $data['get_slider_edit'] = $this->Admin_Model->a_get_slider_edit($this->Admin_Model->xl_return_rows("slider_video_text", "id"));
+            $this->load->view('admin/slider/slider_update', $data);
+        }
+
+    }
+
+    public function slider_edit_act() {
+
+        $h1_text_slider = $_POST['h1_text'];
+
+        if (!empty($h1_text_slider)){
+
+            $config['upload_path']      = './uploads/admin/slider/';
+            $config['allowed_types']    = 'mp4';
+            $config['remove_spaces']    = TRUE;
+            $config['file_ext_tolower'] = TRUE;
+            $config['encrypt_name']     = TRUE;
+            $this->upload->initialize($config);
+
+            if ($this->upload->do_upload('file')) {
+
+                $img = $this->upload->data();
+
+                $data = [
+                    "h1_text" => $h1_text_slider,
+                    "file"    => $img['file_name']
+                ];
+
+                $data_xss_cleaned = $this->security->xss_clean($data);
+
+                $this->Admin_Model->a_slider_edit($data_xss_cleaned);
+                redirect(base_url(Slider_List));
+
+            } else{
+                redirect(base_url(Slider_Edit));
+            }
 
         } else{
             redirect($_SERVER['HTTP_REFERER']);

@@ -23,39 +23,32 @@
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div class="tab-pane container active mx-0 px-0" id="home">
-                        <div class="form-group row mt-3">
-                            <div class="col-sm-2 mb-3 mb-sm-0">
-                                <label for="Status"><b>Status</b></label>
-                                <select name="Status" id="Status" class="form-control">
-                                    <option value="">-Select-</option>
-                                    <option value="">edit</option>
-                                    <option value="">phone</option>
-                                </select>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                        <label for="Status"><b>Status</b></label>
+                                        <select name="Status" id="Status" class="form-control">
+                                            <option value="empty">-Select-</option>
+                                            <option value="">edit</option>
+                                            <option value="">phone</option>
+                                        </select>
+                                </div>
                             </div>
-                            <div class="col-sm-6 mb-3 mb-sm-0">
+                            <div class="col-sm-6">
                                 <label for="FirstName"><b>First Name</b></label>
                                 <input type="text" name="FirstName_az" class="form-control" id="FirstName" placeholder="First Name">
                             </div>
+                            <div class="col-sm-3 mb-3 mb-sm-0">
+                                <label for="ProfilePhoto"><b>Profile Photo</b></label>
+                                <input type="file" name="file" class="form-control p-1" id="ProfilePhoto">
+                            </div>
                         </div>
+
                     </div>
                 </div>
                 <br>
 
-                <div class="form-group">
-                    <div class="row">
-
-
-
-
-                        <div class="col-sm-3 mb-3 mb-sm-0">
-                            <label for="ProfilePhoto"><b>Profile Photo</b></label>
-                            <input type="file" name="file" class="form-control" id="ProfilePhoto">
-                        </div>
-                    </div>
-                </div>
-                <br>
-
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-outline-success">Create</button>
 
 
             </form>

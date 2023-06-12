@@ -29,7 +29,7 @@
                                 <label for="file_u"><b>Logo Update</b></label>
                                     <div class="d-flex flex-row justify-content-start align-items-start">
                                         <img width="50" id="inp_img" src="<?php echo base_url('uploads/admin/navbar/') . $get_single_img['file']; ?>">
-                                        <input type="file" name="file" class="form-control" id="file_u" hidden>
+                                        <input type="file" name="user" class="form-control" id="file_u" hidden>
                                     </div>
                                     <script>
                                         document.querySelector("#inp_img").addEventListener("click", function () {
@@ -40,13 +40,13 @@
                             </div>
                         <div class="col-sm-6 mb-3 mb-sm-0">
                             <label for="Link"><b>Nav Link</b></label>
-                            <input type="text" name="href" class="form-control" id="Link" value="<?php echo $get_single_img['file_href']; ?>">
+                            <input type="text" name="file_href" class="form-control" id="Link" value="<?php echo $get_single_img['file_href']; ?>">
                         </div>
                     </div>
                 </div>
             </div>
             <br>
-            <button type="submit" class="btn btn-success">Update</button>
+            <button type="submit" class="btn btn-outline-success">Update</button>
 
 
         </form>

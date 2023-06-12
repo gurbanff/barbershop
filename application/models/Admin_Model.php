@@ -94,6 +94,28 @@ class Admin_Model extends CI_Model{
         return $this->db->where('id', $id)->get('navbar_logo')->row_array();
 
     }
+
+    public function a_nav_logo_delete($id) {
+
+        $this->db->where('id', $id)->delete("navbar_logo");
+
+    }
+
+    public function a_slider_create($data_xss_cleaned) {
+        $this->db->insert('slider_video_text', $data_xss_cleaned);
+    }
+
+    public function a_get_slider_edit($id) {
+
+        return $this->db->where('id', $id)->get('slider_video_text')->row_array();
+
+    }
+
+    public function a_slider_edit($id) {
+
+        $this->db->where("id", $id)->update('slider_video_text')->row_array();
+
+    }
     
 
 }
