@@ -111,9 +111,9 @@ class Admin_Model extends CI_Model{
 
     }
 
-    public function a_slider_edit($id) {
+    public function a_slider_edit($id, $data) {
 
-        $this->db->where("id", $id)->update('slider_video_text')->row_array();
+        $this->db->where("id", $id)->update('slider_video_text', $data);
 
     }
     

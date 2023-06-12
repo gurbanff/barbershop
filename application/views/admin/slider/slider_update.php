@@ -36,7 +36,15 @@
                     <div class="row">
                         <div class="col-sm-3 mb-3 mb-sm-0">
                             <label for="ProfilePhoto"><b>Slider Video Animation</b></label>
-                            <input type="file" name="file" class="form-control" id="ProfilePhoto">
+                            <input type="file" name="file" class="form-control p-1" id="ProfilePhoto">
+                        </div>
+                        <div class="col-sm-9">
+                            <video autoplay muted loop controls
+                                   style="border: 2px; solid orange"
+                                   width="200" class="rounded"
+                                    src="<?php echo base_url('uploads/admin/slider/') . $get_slider_edit['file']; ?>">
+
+                            </video>
                         </div>
                     </div>
                 </div>

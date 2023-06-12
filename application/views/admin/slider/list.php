@@ -17,12 +17,8 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Name Surname</th>
-                    <th>Position</th>
-                    <th>Email</th>
-                    <th>Experience</th>
-                    <th>Status</th>
-                    <th>Image</th>
+                    <th>File Link</th>
+                    <th>Video Slider</th>
                     <th>Operations</th>
                 </tr>
                 </thead>
@@ -31,6 +27,26 @@
                 <?php $say = 0; foreach($slider_get_all_data as $item){ $say++ ?>
 
                 <tr>
+
+                    <td>
+                        <?php echo $say; ?>
+                    </td>
+
+                    <td>
+                        <?php echo $item['h1_text']; ?>
+                    </td>
+
+                    <td>
+                        <?php if($item['file']){ ?>
+                            <video autoplay muted loop controls
+                                    width="100"
+                                     src="<?php echo base_url('uploads/admin/slider/') . $item['file']; ?>">
+
+                            </video>
+                        <?php }else{ ?>
+                            <img width="50px" height="50px" style="object-fit: cover;" src="<?php echo base_url('uploads/admin/staff/noimage.png'); ?>" />
+                        <?php } ?>
+                    </td>
 
                     <td style="width: 200px !important;">
                         <a style="text-decoration: none;">

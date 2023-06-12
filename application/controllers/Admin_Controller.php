@@ -198,39 +198,37 @@ class Admin_Controller extends CI_Controller
 
     public function nav_logo_edit_act()
     {
-        $img_href = $_POST['file_href'];
+        $img_href = $_POST['href'];
 
-            if (!empty($img_href)) {
+        if (!empty($img_href)) {
+            $config['upload_path']      = './uploads/admin/navbar/';
+            $config['allowed_types']    = 'png|svg';
+            $config['remove_spaces']    = TRUE;
+            $config['file_ext_tolower'] = TRUE;
+            $config['encrypt_name']     = TRUE;
+            $this->upload->initialize($config);
 
-                $config['upload_path']      = './uploads/admin/navbar/';
-                $config['allowed_types']    = 'png|svg';
-                $config['remove_spaces']    = TRUE;
-                $config['file_ext_tolower'] = TRUE;
-                $config['encrypt_name']     = TRUE;
-                $this->load->library('upload', $config);
+            if ($this->upload->do_upload('file')) {
 
-                if ($this->upload->do_upload('user')) {
+                $img = $this->upload->data();
 
-                    $img = $this->upload->data();
+                $data = [
+                    "file" => $img['file_name'],
+                    "file_href" => $img_href
+                ];
 
-                    $data = [
-                        "file" => $img['file_name'], // Input lari bow gonderme, cunki yeniden seni edite gonderecek.
-                        "file_href" => $img_href
-                    ];
+                $data_xss_cleaned = $this->security->xss_clean($data);
 
-                    $data_xss_cleaned = $this->security->xss_clean($data);
-
-                    $this->Admin_Model->nav_img_update($this->Admin_Model->xl_return_rows("navbar_logo", "id") ,$data_xss_cleaned);
-                    redirect(base_url('Navbar_List'));
-
-                } else {
-                    redirect(base_url('Nav_Logo_Edit'));
-                }
+                $this->Admin_Model->nav_img_update($this->Admin_Model->xl_return_rows("navbar_logo", "id"),$data_xss_cleaned);
+                redirect(base_url('Navbar_List'));
 
             } else {
-                redirect($_SERVER['HTTP_REFERER']);
+                redirect(base_url('Nav_Logo_Create'));
             }
 
+        } else {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
     }
 
     public function nav_logo_delete() {
@@ -594,7 +592,7 @@ class Admin_Controller extends CI_Controller
 
                 $data_xss_cleaned = $this->security->xss_clean($data);
 
-                $this->Admin_Model->a_slider_edit($data_xss_cleaned);
+                $this->Admin_Model->a_slider_edit($this->Admin_Model->xl_return_rows("slider_video_text", "id"), $data_xss_cleaned);
                 redirect(base_url(Slider_List));
 
             } else{
@@ -609,7 +607,7 @@ class Admin_Controller extends CI_Controller
 
     public function slider_text_create() {
 
-        $this->load->view('admin/slider/slider_text_create');
+        // Bosu
 
     }
 
