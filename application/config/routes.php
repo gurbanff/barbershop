@@ -78,7 +78,12 @@ $route['Slider_Create']            = 'Admin_Controller/slider_create';
 $route['Slider_Create_Act']        = 'Admin_controller/slider_create_act';
 $route['Slider_Edit']              = 'Admin_Controller/slider_edit';
 $route['Slider_Edit_Act']          = 'Admin_Controller/slider_edit_act';
-$route['Slider_Text_Create']       = 'Admin_Controller/slider_text_create';
+$route['Slider_Delete']            = 'Admin_Controller/slider_delete';
+// About //////////////////////////////////////////////////////////////
+$route['About_Create']             = 'Admin_Controller/about_create';
+$route['About_Create_Act']         = 'Admin_Controller/about_create_act';
+$route['About_Edit']               = 'Admin_Controller/about_edit';
+$route['About_Edit_Act']           = 'Admin_Controller/about_edit_act';
 // Product ////////////////////////////////////////////////////////
 $route['Staff_List']               = 'Admin_Controller/staff_list';
 $route['Staff_Create']             = 'Admin_Controller/staff_create';
@@ -90,6 +95,9 @@ $route['Staff_Edit_Act/(.*)']      = 'Admin_Controller/staff_edit_act/$1';
 // Carousel /////////////////////////////////////////////////////////////
 $route['Carousel_List']            = 'Admin_Controller/carousel_list';
 $route['Carousel_List']            = 'Admin_Controller/carousel_list';
+
+
+$route['testfile']                 = 'Admin_Controller/testfile';
 
 
 

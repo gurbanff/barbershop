@@ -21,4 +21,12 @@ class User_Model extends CI_Model{
         return $this->db->limit(1)->get('navbar_logo')->result_array();
     }
 
+    public function slider_get_data() {
+        return $this->db->limit(1)->get('slider_video_text')->row_array();
+    }
+
+    public function u_get_about_data() {
+        return $this->db->limit(1)->get('about')->row_array();
+    }
+
 }

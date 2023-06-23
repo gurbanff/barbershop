@@ -4,63 +4,62 @@
 
 
     <!-- Carousel Start -->
-    <div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
-        <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                   <video autoplay muted loop id="myVideo">
-                        <source src="<?php echo $directory ?>video/video.mp4" type="video/mp4">
-                    </video>
-                    <div class="carousel-caption d-flex align-items-center justify-content-center text-start">
-                        <div class="mx-sm-5 px-5" style="max-width: 900px;">
-                            <h1 style="color: #D7B56D !important" class="mb-3">Peşəkar xidmətin tək ünvanı!</h1><br><br><br><br>
-                            <h3 style="font-size: 17px !important" class="text-white  mb-4 animated slideInDown"><i style="color: #D7B56D !important" class="fa fa-map-marker-alt text-primary me-3"></i>Bakı şəh., Nizami ray., M. Muxtarova küç 145, Nizami M/S arxası</h3>
-                            <h3 style="font-size: 17px !important" class="text-white mb-4 animated slideInDown"><i style="color: #D7B56D !important" class="fa fa-phone-alt text-primary me-3"></i>+99455/70 329 47 37</h3>
+    <?php if ($slider_all_data) { ?>
+        <div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
+            <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                       <video autoplay muted loop id="myVideo">
+                            <source src="<?php echo base_url('uploads/admin/slider/').$slider_all_data['file']; ?>" type="video/mp4">
+                        </video>
+                        <div class="carousel-caption d-flex align-items-center justify-content-center text-start">
+                            <div class="mx-sm-5 px-5" style="max-width: 900px;">
+                                <h1 style="color: #D7B56D !important" class="mb-3"><?php echo $slider_all_data['h1_text']; ?></h1><br><br><br><br>
+                                <h3 style="font-size: 17px !important" class="text-white  mb-4 animated slideInDown"><i style="color: #D7B56D !important" class="<?php echo $slider_all_data['icon']; ?> me-2"></i><?php echo $slider_all_data['first_p_text']; ?></h3>
+                                <h3 style="font-size: 17px !important" class="text-white mb-4 animated slideInDown"><i style="color: #D7B56D !important" class="<?php echo $slider_all_data['second_icon']; ?> me-2"></i><?php echo $slider_all_data['second_p_text']; ?></h3>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
             </div>
-           
         </div>
-    </div>
+    <?php } ?>
     <!-- Carousel End -->
 
-
     <!-- About Start -->
+<?php if($about_all_data) { ?>
     <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                     <div class="d-flex flex-column">
-                        <img class="img-fluid w-75 align-self-end" src="<?php echo $directory ?>img/about.jpg" alt="">
+                        <img class="img-fluid w-75 align-self-end" src="<?php echo base_url('uploads/admin/about/').$about_all_data['about_file']; ?>" alt="">
                         <div class="w-50 bg-secondary p-5" style="margin-top: -25%;">
-                            <center><h1 style="color: #D7B56D !important;" class="text-primary mb-3">VIP</h1>
-                            <h2 class="mb-0">Xidmət</h2></center>
+                            <h1 style="color: #D7B56D !important;" class="text-primary mb-3 text-center"><?php echo $about_all_data['image_h1_text']; ?></h1>
+                            <h2 class="mb-0 text-center"><?php echo $about_all_data['image_h2_text']; ?></h2>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                    <p style="color: #D7B56D !important" class="d-inline-block bg-secondary text-primary py-1 px-4">Haqqımızda</p>
-                    <h2 class="mb-4">Bizimlə bağlı ətraflı məlumat əldə edin!</h2>
-                    <p>XL Barbershop yeni açılmasına baxmayaraq uzun illərdir bu sahədə fəaliyyət görsədən ustaların möhtəşəm əl qabiliyyətləri sayəsində sizləri məmnun etməkdədir.</p>
-                    <p class="mb-4">Bir çox sahə üzrə xidmət göstərməyimiz, müasir avadanlıqlarımız, müştərilərimizin rahatlığı üçün təqdim edilən şərait bizi bir çox kişi salonundan fərqləndirən faktorlardır.</p>
+                    <p style="color: #D7B56D !important" class="d-inline-block bg-secondary text-primary py-1 px-4"><?php echo $about_all_data['about_p_text']; ?></p>
+                    <h2 class="mb-4"><?php echo $about_all_data['about_h2_text']; ?></h2>
+                    <p style="white-space: pre-wrap;"><?php echo $about_all_data['about_p1_text']; ?></p>
                     <div class="row g-4">
                         <div class="col-md-6">
-                            <h3 class="mb-3">Əziz müştərilər!</h3>
-                            <p class="mb-0">Əl çatmayan arzular, çin olmayan röyalara siz də çatmaq istəyirsinizsə bizə etibar edin! Limitsiz çay/qəhvə xidmətimiz və avtomobiliniz üçün pulsuz dayanacaq imkanlarından istifadə edə bilərsiniz.</p>
+                            <h3 class="mb-3"><?php echo $about_all_data['about_h3_text']; ?></h3>
+                            <p class="mb-0"><?php echo $about_all_data['about_h3_p_text']; ?></p>
                         </div>
                         <div class="col-md-6">
-                            <h3 class="mb-3">Əziz valideynlər!</h3>
-                            <p class="mb-0">Övladlarınızı bizim zalımıza etibar edərək həm ximdətlərimizdən istifadə edə biləcəksiniz həm də övladınızın necə əyləncəli vaxt keçirdərək yeni saç stilinə malik olacağına şahid olacaqsınız.</p>
+                            <h3 class="mb-3"><?php echo $about_all_data['about_h3_text_2']; ?></h3>
+                            <p class="mb-0"><?php echo $about_all_data['about_h3_p_text_2']; ?></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+<?php } ?>
     <!-- About End -->
-
 
     <!-- Service Start -->
     <div class="container-xxl py-5">

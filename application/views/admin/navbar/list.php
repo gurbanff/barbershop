@@ -70,65 +70,69 @@
                         </div>
                     </div>
 
-                </div>
+<!--                </div>-->
                     <!-- Tab 2 -->
                     <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Navbar List
-                                <a href="<?php echo base_url('Navbar_Create'); ?>">
-                                    <button style="float: right;" type="button" class="btn btn-primary">Create</button>
-                                </a>
-                            </h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>#ID</th>
-                                            <th>Navbar Name</th>
-                                            <th>Navbar Link</th>
-                                            <th>Operations</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
 
-                                        <?php $say = 0; foreach($get_all_nav as $item){ $say++ ?>
-
+                <div class="row">
+                        <div class="col-sm-12">
+                        <div class="card shadow mb-4 ">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Navbar List
+                                    <a href="<?php echo base_url('Navbar_Create'); ?>">
+                                        <button style="float: right;" type="button" class="btn btn-primary">Create</button>
+                                    </a>
+                                </h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" width="100%" cellspacing="0">
+                                        <thead>
                                             <tr>
-                                                <td style="width: 50px; "><?php echo $say; ?></td>                                                
-                                                <td><?php echo $item['nav_name']; ?></td>                                                
-                                                <td><?php echo $item['nav_a_href']; ?></td>                                                
-                                                <td width="200">
-                                                    <a style="text-decoration: none;">
-                                                        <button type="button" title="View" class="btn btn-success" disabled>
-                                                            <i class="fas fa-fw fa-eye"></i>
-                                                        </button>
-                                                    </a>
-                                                    <a href="<?php echo base_url('Navbar_Edit/'.$item['id']); ?>" style="text-decoration: none;">
-                                                        <button type="button" title="Update" class="btn btn-warning">
-                                                            <i class="fas fa-fw fa-pen"></i>
-                                                        </button>
-                                                    </a>
-                                                    <a onclick="return confirm('Silmek istediyinize Eminsiz?')" href="<?php echo base_url('Navbar_Delete/'.$item['id']); ?>" style="text-decoration: none;">
-                                                        <button type="button" title="Delete" class="btn btn-danger">
-                                                            <i class="fas fa-fw fa-trash"></i>
-                                                        </button>
-                                                    </a>
-                                                    
-                                                </td>
+                                                <th>#ID</th>
+                                                <th>Navbar Name</th>
+                                                <th>Navbar Link</th>
+                                                <th>Operations</th>
                                             </tr>
+                                        </thead>
+                                        <tbody>
 
-                                        <?php } ?>
+                                            <?php $say = 0; foreach($get_all_nav as $item){ $say++ ?>
 
-                                    </tbody>
-                                </table>
+                                                <tr>
+                                                    <td style="width: 50px; "><?php echo $say; ?></td>
+                                                    <td><?php echo $item['nav_name']; ?></td>
+                                                    <td><?php echo $item['nav_a_href']; ?></td>
+                                                    <td width="200">
+                                                        <a style="text-decoration: none;">
+                                                            <button type="button" title="View" class="btn btn-success" disabled>
+                                                                <i class="fas fa-fw fa-eye"></i>
+                                                            </button>
+                                                        </a>
+                                                        <a href="<?php echo base_url('Navbar_Edit/'.$item['id']); ?>" style="text-decoration: none;">
+                                                            <button type="button" title="Update" class="btn btn-warning">
+                                                                <i class="fas fa-fw fa-pen"></i>
+                                                            </button>
+                                                        </a>
+                                                        <a onclick="return confirm('Silmek istediyinize Eminsiz?')" href="<?php echo base_url('Navbar_Delete/'.$item['id']); ?>" style="text-decoration: none;">
+                                                            <button type="button" title="Delete" class="btn btn-danger">
+                                                                <i class="fas fa-fw fa-trash"></i>
+                                                            </button>
+                                                        </a>
+
+                                                    </td>
+                                                </tr>
+
+                                            <?php } ?>
+
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
 
+<!--            </div>-->
 <?php $this->load->view('admin/includes/footer'); ?>
 <?php $this->load->view('admin/includes/footerStyle'); ?>

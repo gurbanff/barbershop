@@ -523,6 +523,10 @@ class Admin_Controller extends CI_Controller
     public function slider_create_act() {
 
         $h1_text_slider = $_POST['h1_text'];
+        $first_icon     = $_POST['first_icon'];
+        $first_p_text   = $_POST['first_p_text'];
+        $second_icon    = $_POST['second_p_icon'];
+        $second_p_text  = $_POST['second_p_text'];
 
         if (!empty($h1_text_slider)){
 
@@ -538,17 +542,21 @@ class Admin_Controller extends CI_Controller
                 $img = $this->upload->data();
 
                 $data = [
-                  "h1_text" => $h1_text_slider,
-                  "file"    => $img['file_name']
+                    "h1_text"       => $h1_text_slider,
+                    "file"          => $img['file_name'],
+                    "icon"          => $first_icon,
+                    "first_p_text"  => $first_p_text,
+                    "second_icon"   => $second_icon,
+                    "second_p_text" => $second_p_text
                 ];
 
                 $data_xss_cleaned = $this->security->xss_clean($data);
 
                 $this->Admin_Model->a_slider_create($data_xss_cleaned);
-                redirect(base_url(Slider_List));
+                redirect(base_url('Slider_Edit'));
 
             } else{
-                redirect(base_url(Slider_Create));
+                redirect(base_url('Slider_Create'));
             }
 
         } else{
@@ -571,8 +579,12 @@ class Admin_Controller extends CI_Controller
     public function slider_edit_act() {
 
         $h1_text_slider = $_POST['h1_text'];
+        $first_icon     = $_POST['first_icon'];
+        $first_p_text   = $_POST['first_p_text'];
+        $second_icon    = $_POST['second_p_icon'];
+        $second_p_text  = $_POST['second_p_text'];
 
-        if (!empty($h1_text_slider)){
+        if (true){
 
             $config['upload_path']      = './uploads/admin/slider/';
             $config['allowed_types']    = 'mp4';
@@ -586,17 +598,33 @@ class Admin_Controller extends CI_Controller
                 $img = $this->upload->data();
 
                 $data = [
-                    "h1_text" => $h1_text_slider,
-                    "file"    => $img['file_name']
+                    "h1_text"       => $h1_text_slider,
+                    "file"          => $img['file_name'],
+                    "icon"          => $first_icon,
+                    "first_p_text"  => $first_p_text,
+                    "second_icon"   => $second_icon,
+                    "second_p_text" => $second_p_text
                 ];
 
                 $data_xss_cleaned = $this->security->xss_clean($data);
 
                 $this->Admin_Model->a_slider_edit($this->Admin_Model->xl_return_rows("slider_video_text", "id"), $data_xss_cleaned);
-                redirect(base_url(Slider_List));
+                redirect(base_url('Slider_List'));
 
             } else{
-                redirect(base_url(Slider_Edit));
+
+                $data = [
+                    "h1_text"       => $h1_text_slider,
+                    "icon"          => $first_icon,
+                    "first_p_text"  => $first_p_text,
+                    "second_icon"   => $second_icon,
+                    "second_p_text" => $second_p_text
+                ];
+
+                $data_xss_cleaned = $this->security->xss_clean($data);
+
+                $this->Admin_Model->a_slider_edit($this->Admin_Model->xl_return_rows("slider_video_text", "id"), $data_xss_cleaned);
+                redirect(base_url('Slider_List'));
             }
 
         } else{
@@ -605,11 +633,166 @@ class Admin_Controller extends CI_Controller
 
     }
 
-    public function slider_text_create() {
+    public function slider_delete() {
+        $this->Admin_Model->a_slider_delete($this->Admin_Model->xl_return_rows("slider_video_text", "id"));
+        redirect(base_url('Slider_Create'));
+    }
 
-        // Bosu
+    public function about_create() {
+
+        $ifCreateAct = $this->Admin_Model->xl_return_rows("about", "id");
+            if($ifCreateAct == (-1)) {
+                $this->load->view('admin/about/about_create');
+            }
+            else {
+                redirect(base_url('About_Edit'));
+            }
 
     }
 
+    public function about_create_act() {
+
+        $image_h1_text      = $_POST['image_h1_text'];
+        $image_h2_text      = $_POST['image_h2_text'];
+        $about_p_text       = $_POST['about_p_text'];
+        $about_h2_text      = $_POST['about_h2_text'];
+        $about_p1_text      = $_POST['about_p1_text'];
+        $about_h3_text      = $_POST['about_h3_text'];
+        $about_h3_p_text    = $_POST['about_h3_p_text'];
+        $about_h3_text_2    = $_POST['about_h3_text_2'];
+        $about_h3_p_text_2	= $_POST['about_h3_p_text_2'];
+
+        if (true) {
+            $config['upload_path']      = './uploads/admin/about/';
+            $config['allowed_types']    = 'jpg|png|jpeg|JPG|JPEG|mp4';
+            $config['remove_spaces']    = TRUE;
+            $config['file_ext_tolower'] = TRUE;
+            $config['encrypt_name']     = TRUE;
+            $this->upload->initialize($config);
+
+            if ($this->upload->do_upload('about_file')) {
+                $about_file = $this->upload->data();
+
+                $data = [
+                    "image_h1_text"     => $image_h1_text,
+                    "image_h2_text"     => $image_h2_text,
+                    "about_p_text"      => $about_p_text,
+                    "about_h2_text"     => $about_h2_text,
+                    "about_p1_text"     => $about_p1_text,
+                    "about_h3_text"     => $about_h3_text,
+                    "about_h3_p_text"   => $about_h3_p_text,
+                    "about_h3_text_2"   => $about_h3_text_2,
+                    "about_h3_p_text_2" => $about_h3_p_text_2,
+                    "about_file"        => $about_file['file_name']
+                ];
+
+                $data_xss_cleaned = $this->security->xss_clean($data);
+
+                $this->Admin_Model->a_about_create($data_xss_cleaned);
+                redirect(base_url('Dashboard'));
+            }else {
+                $data = [
+                    "image_h1_text"     => $image_h1_text,
+                    "image_h2_text"     => $image_h2_text,
+                    "about_p_text"      => $about_p_text,
+                    "about_h2_text"     => $about_h2_text,
+                    "about_p1_text"     => $about_p1_text,
+                    "about_h3_text"     => $about_h3_text,
+                    "about_h3_p_text"   => $about_h3_p_text,
+                    "about_h3_text_2"   => $about_h3_text_2,
+                    "about_h3_p_text_2" => $about_h3_p_text_2,
+                ];
+
+                $data_xss_cleaned = $this->security->xss_clean($data);
+
+                $this->Admin_Model->a_about_create($data_xss_cleaned);
+                redirect(base_url('Dashboard'));
+            }
+
+        } else {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+
+    }
+
+    public function about_edit() {
+        $ifCreateAct = $this->Admin_Model->xl_return_rows("about", "id");
+        if ($ifCreateAct == (-1)) {
+            redirect(base_url("About_Create"));
+        } else {
+            $data['get_about_edit'] = $this->Admin_Model->a_get_about_edit($this->Admin_Model->xl_return_rows("about", "id"));
+            $this->load->view('admin/about/about_edit', $data);
+        }
+    }
+
+    public function about_edit_act() {
+
+        $image_h1_text      = $_POST['image_h1_text'];
+        $image_h2_text      = $_POST['image_h2_text'];
+        $about_p_text       = $_POST['about_p_text'];
+        $about_h2_text      = $_POST['about_h2_text'];
+        $about_p1_text      = $_POST['about_p1_text'];
+        $about_h3_text      = $_POST['about_h3_text'];
+        $about_h3_p_text    = $_POST['about_h3_p_text'];
+        $about_h3_text_2    = $_POST['about_h3_text_2'];
+        $about_h3_p_text_2	= $_POST['about_h3_p_text_2'];
+
+        if (true) {
+            $config['upload_path']      = './uploads/admin/about/';
+            $config['allowed_types']    = 'jpg|png|jpeg|JPG|JPEG|mp4';
+            $config['remove_spaces']    = TRUE;
+            $config['file_ext_tolower'] = TRUE;
+            $config['encrypt_name']     = TRUE;
+            $this->upload->initialize($config);
+
+            if ($this->upload->do_upload('about_file')) {
+                $about_file = $this->upload->data();
+
+                $data = [
+                    "image_h1_text"     => $image_h1_text,
+                    "image_h2_text"     => $image_h2_text,
+                    "about_p_text"      => $about_p_text,
+                    "about_h2_text"     => $about_h2_text,
+                    "about_p1_text"     => $about_p1_text,
+                    "about_h3_text"     => $about_h3_text,
+                    "about_h3_p_text"   => $about_h3_p_text,
+                    "about_h3_text_2"   => $about_h3_text_2,
+                    "about_h3_p_text_2" => $about_h3_p_text_2,
+                    "about_file"        => $about_file['file_name']
+                ];
+
+                $data_xss_cleaned = $this->security->xss_clean($data);
+
+                $this->Admin_Model->a_about_edit($this->Admin_Model->xl_return_rows("about", "id"), $data_xss_cleaned);
+                redirect(base_url("About_Edit"));
+
+            } else {
+                $data = [
+                    "image_h1_text"     => $image_h1_text,
+                    "image_h2_text"     => $image_h2_text,
+                    "about_p_text"      => $about_p_text,
+                    "about_h2_text"     => $about_h2_text,
+                    "about_p1_text"     => $about_p1_text,
+                    "about_h3_text"     => $about_h3_text,
+                    "about_h3_p_text"   => $about_h3_p_text,
+                    "about_h3_text_2"   => $about_h3_text_2,
+                    "about_h3_p_text_2" => $about_h3_p_text_2,
+                ];
+
+                $data_xss_cleaned = $this->security->xss_clean($data);
+
+                $this->Admin_Model->a_about_edit($this->Admin_Model->xl_return_rows("about", "id"), $data_xss_cleaned);
+                redirect(base_url("About_Edit"));
+            }
+
+        } else {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+
+    }
+
+    public function testfile() {
+        $this->load->view('admin/slider/test');
+    }
 
 }

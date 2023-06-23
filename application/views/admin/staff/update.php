@@ -8,7 +8,7 @@
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Staff Update
         <a href="<?php echo base_url('Staff_List'); ?>">
-            <button style="float: right;" type="button" class="btn btn-primary">Back</button>
+            <button style="float: right;" type="button" class="btn btn-warning">Back</button>
         </a>
         </h6>
     </div>

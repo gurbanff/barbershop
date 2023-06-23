@@ -116,6 +116,21 @@ class Admin_Model extends CI_Model{
         $this->db->where("id", $id)->update('slider_video_text', $data);
 
     }
-    
+
+    public function a_slider_delete($id) {
+        $this->db->where('id', $id)->delete('slider_video_text');
+    }
+
+    public function a_about_create($data_xss_cleaned) {
+        $this->db->insert('about', $data_xss_cleaned);
+    }
+
+    public function a_get_about_edit($id) {
+        return $this->db->where("id", $id)->get('about')->row_array();
+    }
+
+    public function a_about_edit($id, $data) {
+        $this->db->where("id", $id)->update("about", $data);
+    }
 
 }

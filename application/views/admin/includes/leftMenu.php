@@ -45,17 +45,25 @@
         </li>
         <hr class="sidebar-divider d-none d-md-block">
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#slider"
+            <a class="nav-link collapsed" href="<?php echo base_url('Slider_Create'); ?>" data-target="#slider"
                aria-expanded="true" aria-controls="carousel">
                 <i class="fas fa-fw fa-folder"></i>
                 <span>Slider</span>
             </a>
-            <div id="slider" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="<?php echo base_url('Slider_List'); ?>">List</a>
-                    <a class="collapse-item" href="<?php echo base_url('#'); ?>">Create</a>
-                </div>
-            </div>
+<!--            <div id="slider" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">-->
+<!--                <div class="bg-white py-2 collapse-inner rounded">-->
+<!--                    <a class="collapse-item" href="--><?php //echo base_url('Slider_List'); ?><!--">List</a>-->
+<!--                    <a class="collapse-item" href="--><?php //echo base_url('#'); ?><!--">Create</a>-->
+<!--                </div>-->
+<!--            </div>-->
+        </li>
+        <hr class="sidebar-divider d-none d-md-block">
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="<?php echo base_url('About_Create'); ?>" data-target="#about"
+               aria-expanded="true" aria-controls="carousel">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>About</span>
+            </a>
         </li>
         <hr class="sidebar-divider d-none d-md-block">
         <li class="nav-item">
