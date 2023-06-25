@@ -7,6 +7,12 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">About Create</h6>
+            <a href="<?php echo base_url('About_Create'); ?>" class="btn btn-primary btn-icon-split">
+            <span class="icon text-white-50">
+                <i class="fas fa-trash"></i>
+            </span>
+                <span class="text">Back</span>
+            </a>
         </div>
         <div class="card-body">
 

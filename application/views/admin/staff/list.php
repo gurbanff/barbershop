@@ -6,12 +6,14 @@
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Staff List
-                                <a href="<?php echo base_url('Staff_Create'); ?>">
-                                    <button style="float: right;" type="button" class="btn btn-primary">Create</button>
-                                </a>
-                            </h6>
+                        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                            <h6 class="m-0 font-weight-bold text-warning">Staff List</h6>
+                            <a href="<?php echo base_url('Staff_Create'); ?>" class="btn btn-primary btn-icon-split">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-arrow-left"></i>
+                            </span>
+                                <span class="text">Create</span>
+                            </a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">

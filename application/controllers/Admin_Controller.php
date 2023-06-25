@@ -791,6 +791,100 @@ class Admin_Controller extends CI_Controller
 
     }
 
+    public function about_delete() {
+        $this->Admin_Model->a_about_delete($this->Admin_Model->xlreturn_rows("about", "id"));
+        redirect(base_url("About_Create"));
+    }
+
+    public function service_list() {
+
+        $data['get_service_data'] = $this->Admin_Model->a_get_service_data_list();
+
+        $this->load->view('admin/services/services_list', $data);
+    }
+
+    public function service_header_create() {
+
+        $ifCreateAct = $this->Admin_Model->xl_return_rows("service", "id");
+        if($ifCreateAct == (-1)) {
+            $this->load->view('admin/services/service_header_create');
+        } else {
+            redirect(base_url('Service_Header_Edit'));
+        }
+    }
+
+    public function service_header_create_act() {
+
+        $first_head     = $_POST['first_header'];
+        $second_head    = $_POST['second_header'];
+
+        if(!empty($first_head) && !empty($second_head)) {
+
+            $data = [
+                "first_header"  => $first_head,
+                "second_header" => $second_head
+            ];
+
+            $data_xss_cleaned = $this->security->xss_clean($data);
+            $this->Admin_Model->a_service_create($data_xss_cleaned);
+            redirect(base_url("Service_List"));
+
+        } else {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+
+    }
+
+    public function service_header_edit($id) {
+
+        $data['service_single_data'] = $this->Admin_Model->a_get_service_single_data($id);
+
+        $this->load->view('admin/services/service_header_edit', $data);
+
+    }
+
+    public function service_header_edit_act($id) {
+
+        $first_head     = $_POST['first_header'];
+        $second_head    = $_POST['second_header'];
+
+        if(!empty($first_head) && !empty($second_head)) {
+
+            $data = [
+                "first_header"  => $first_head,
+                "second_header" => $second_head
+            ];
+
+            $data_xss_cleaned = $this->security->xss_clean($data);
+            $this->Admin_Model->a_service_edit($id, $data_xss_cleaned);
+            redirect(base_url('Service_List'));
+
+        } else {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+
+    }
+
+    public function service_header_delete($id) {
+
+        $this->Admin_Model->a_service_header_delete($this->Admin_Model->xl_return_rows("service", "id"));
+        redirect(base_url('Service_Header_Create'));
+
+    }
+
+    public function service_create() {
+
+            $this->load->view('admin/services/service_create');
+//        $ifCreateAct = $this->Admin_Model->xl_return_rows("services", "id");
+//            if($ifCreateAct == (-1)) {
+//                $this->load->view('admin/services/service_create');
+//            }
+//            else {
+//                redirect(base_url('Service_Edit'));
+//            }
+
+    }
+
     public function testfile() {
         $this->load->view('admin/slider/test');
     }

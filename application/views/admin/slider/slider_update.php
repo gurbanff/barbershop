@@ -10,13 +10,15 @@
         }
     </style>
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-warning">Staff Video and Text(h1) Create
-                <a href="<?php echo base_url('Slider_List'); ?>">
-                    <button style="float: right;" type="button" class="btn btn-warning">Back</button>
+            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                <h6 class="m-0 font-weight-bold text-warning">Slider Video and Text Update</h6>
+                <a onclick="return confirm('Siz bu Məlumatları silmək üzərəsiniz!');" href="<?php echo base_url('Slider_Delete'); ?>" class="btn btn-danger btn-icon-split">
+            <span class="icon text-white-50">
+                <i class="fas fa-trash"></i>
+            </span>
+                    <span class="text">Delete</span>
                 </a>
-            </h6>
-        </div>
+            </div>
         <div class="card-body">
 
             <br>

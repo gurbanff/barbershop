@@ -5,12 +5,14 @@
 
 
 <div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Navbar Create
-            <a href="<?php echo base_url('Navbar_List'); ?>">
-                <button style="float: right;" type="button" class="btn btn-primary">Back</button>
-            </a>
-        </h6>
+    <div class="card-header py-3 d-flex justify-content-between align-items-center">
+        <h6 class="m-0 font-weight-bold text-primary">Navbar Create</h6>
+        <a href="<?php echo base_url('Navbar_List'); ?>" class="btn btn-primary btn-icon-split">
+            <span class="icon text-white-50">
+                <i class="fas fa-arrow-left"></i>
+            </span>
+            <span class="text">Back</span>
+        </a>
     </div>
     <div class="card-body">
 

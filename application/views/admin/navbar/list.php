@@ -6,12 +6,17 @@
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Navbar Logo List
-                                <a href="<?php echo base_url('Nav_Logo_Create'); ?>">
-                                    <button style="float: right;" type="button" class="btn btn-primary">Create</button>
+                        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                            <h6 class="m-0 font-weight-bold text-primary">Navbar Logo List</h6>
+                                <a href="<?php echo base_url('Nav_Logo_Create'); ?>" class="btn btn-success btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-plus"></i>
+                                    </span>
+                                    <span class="text">Create</span>
                                 </a>
-                            </h6>
+<!--                                <a href="--><?php //echo base_url('Nav_Logo_Create'); ?><!--">-->
+<!--                                    <button style="float: right;" type="button" class="btn btn-primary">Create</button>-->
+<!--                                </a>-->
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -77,12 +82,14 @@
                 <div class="row">
                         <div class="col-sm-12">
                         <div class="card shadow mb-4 ">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Navbar List
-                                    <a href="<?php echo base_url('Navbar_Create'); ?>">
-                                        <button style="float: right;" type="button" class="btn btn-primary">Create</button>
-                                    </a>
-                                </h6>
+                            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                                <h6 class="m-0 font-weight-bold text-primary">Navbar Header List</h6>
+                                <a href="<?php echo base_url('Navbar_Create'); ?>" class="btn btn-success btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-plus"></i>
+                                    </span>
+                                    <span class="text">Create</span>
+                                </a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">

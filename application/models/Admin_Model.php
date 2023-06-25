@@ -133,4 +133,30 @@ class Admin_Model extends CI_Model{
         $this->db->where("id", $id)->update("about", $data);
     }
 
+    public function a_about_delete($id) {
+        $this->db->where('id', $id)->delete('about');
+    }
+
+    public function a_service_create($data_xss_cleaned) {
+        $this->db->insert('service', $data_xss_cleaned);
+    }
+
+    public function a_get_service_data_list() {
+        return $this->db->get('service')->result_array();
+    }
+
+    public function a_get_service_single_data($id) {
+        return $this->db->where('id', $id)->get('service')->row_array();
+    }
+
+    public function a_service_header_delete($id) {
+
+        $this->db->where('id', $id)->delete('service');
+
+    }
+
+    public function a_service_edit($id, $data_xss_cleaned) {
+        $this->db->where('id', $id)->update('service', $data_xss_cleaned);
+    }
+
 }

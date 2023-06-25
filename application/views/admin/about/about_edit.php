@@ -5,8 +5,14 @@
 <?php $this->load->view('admin/includes/nav'); ?>
 
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
+        <div class="card-header py-3 d-flex justify-content-between align-items-center">
             <h6 class="m-0 font-weight-bold text-warning">About Update Page</h6>
+            <a onclick="return confirm('Siz bu Məlumatları silmək üzərəsiniz!');" href="<?php echo base_url('About_Delete'); ?>" class="btn btn-danger btn-icon-split">
+            <span class="icon text-white-50">
+                <i class="fas fa-arrow-left"></i>
+            </span>
+                <span class="text">Delete</span>
+            </a>
         </div>
         <div class="card-body">
 
