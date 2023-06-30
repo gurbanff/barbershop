@@ -21,6 +21,7 @@ class User_Controller extends CI_Controller {
         $data['nav_logo_all_data']      = $this->User_Model->navlogo_get_img();
         $data['slider_all_data']        = $this->User_Model->slider_get_data();
         $data['about_all_data']         = $this->User_Model->u_get_about_data();
+        $data['service_all_data']       = $this->User_Model->u_get_service_data();
         $this->load->view('user/index', $data);
     }
 

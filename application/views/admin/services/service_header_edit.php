@@ -20,7 +20,7 @@
             <h3 class="text-center text-white bg-warning py-2 rounded">Navbar Section</h3>
             <br>
 
-            <form action="<?php echo base_url('Service_Header_Edit_Act/'.$service_single_data['id']); ?>" method="post" enctype="application/x-www-form-urlencoded">
+            <form action="<?php echo base_url('Service_Header_Edit_Act/'.$get_service_data['id']); ?>" method="post" enctype="application/x-www-form-urlencoded">
 
                 <!-- Tab panes -->
                 <div class="tab-content">
@@ -28,11 +28,11 @@
                         <div class="form-group row mt-3">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label for="service_name1"><b>Service First Name</b></label>
-                                <input type="text" name="first_header" class="form-control" id="service_name1" value="<?php echo $service_single_data['first_header']; ?>">
+                                <input type="text" name="first_header" class="form-control" id="service_name1" value="<?php echo $get_service_data['first_header']; ?>">
                             </div>
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label for="service_name2"><b>Service Second Namek</b></label>
-                                <input type="text" name="second_header" class="form-control" id="service_name2" value="<?php echo $service_single_data['second_header']; ?>">
+                                <input type="text" name="second_header" class="form-control" id="service_name2" value="<?php echo $get_service_data['second_header']; ?>">
                             </div>
                         </div>
                     </div>

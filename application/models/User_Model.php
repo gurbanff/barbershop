@@ -29,4 +29,8 @@ class User_Model extends CI_Model{
         return $this->db->limit(1)->get('about')->row_array();
     }
 
+    public function u_get_service_data() {
+        return $this->db->limit(1)->get('service')->row_array();
+    }
+
 }

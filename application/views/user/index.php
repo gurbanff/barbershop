@@ -62,17 +62,18 @@
     <!-- About End -->
 
     <!-- Service Start -->
+<?php if($service_all_data){ ?>
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <p style="color: #D7B56D !important" class="d-inline-block bg-secondary text-primary py-1 px-4">Xidmətlərimiz</p>
-                <h2>Biz nələr edirik?</h2>
+                <p style="color: #D7B56D !important" class="d-inline-block bg-secondary text-primary py-1 px-4"><?php echo $service_all_data['first_header']; ?></p>
+                <h2><?php echo $service_all_data['second_header']; ?></h2>
             </div>
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item position-relative overflow-hidden bg-secondary d-flex h-100 p-5 ps-0">
                         <!-- <div class="bg-dark d-flex flex-shrink-0 align-items-center justify-content-center" style="width: 60px; height: 60px;">
-                            <img  class="img-fluid" src="<?php echo $directory ?>img/haircut.png" alt="">
+                            <img  class="img-fluid" src="<?php #echo $directory ?>img/haircut.png" alt="">
                         </div> -->
                         <div class="ps-4">
                             <h3 style="color: #D7B56D !important" class="mb-3">Saç kəsimi</h3>
@@ -132,6 +133,7 @@
             </div>
         </div>
     </div>
+<?php } ?>
     <!-- Service End -->
 
 

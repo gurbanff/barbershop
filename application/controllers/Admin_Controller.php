@@ -835,15 +835,19 @@ class Admin_Controller extends CI_Controller
 
     }
 
-    public function service_header_edit($id) {
+    public function service_header_edit() {
 
-        $data['service_single_data'] = $this->Admin_Model->a_get_service_single_data($id);
-
-        $this->load->view('admin/services/service_header_edit', $data);
+        $ifCreateAct = $this->Admin_Model->xl_return_rows("service", "id");
+        if ($ifCreateAct == (-1)) {
+            redirect(base_url('Service_Header_Create'));
+        } else {
+            $data['get_service_data'] = $this->Admin_Model->a_get_service_single_data($this->Admin_Model->xl_return_rows('service', 'id'));
+            $this->load->view('admin/services/service_header_edit', $data);
+        }
 
     }
 
-    public function service_header_edit_act($id) {
+    public function service_header_edit_act() {
 
         $first_head     = $_POST['first_header'];
         $second_head    = $_POST['second_header'];

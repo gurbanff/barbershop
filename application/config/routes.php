@@ -89,8 +89,8 @@ $route['About_Delete']             = 'Admin_Controller/about_delete';
 $route['Service_List']                  = 'Admin_Controller/service_list';
 $route['Service_Header_Create']         = 'Admin_Controller/service_header_create';
 $route['Service_Header_Create_Act']     = 'Admin_Controller/service_header_create_act';
-$route['Service_Header_Edit/(.*)']      = 'Admin_Controller/service_header_edit/$1';
-$route['Service_Header_Edit_Act/(.*)']  = 'Admin_Controller/service_header_edit_act/$1';
+$route['Service_Header_Edit']           = 'Admin_Controller/service_header_edit';
+$route['Service_Header_Edit_Act']       = 'Admin_Controller/service_header_edit_act';
 $route['Service_Header_Delete/(.*)']    = 'Admin_Controller/service_header_delete/$1';
 $route['Service_Create']                = 'Admin_Controller/service_create';
 // Product ////////////////////////////////////////////////////////

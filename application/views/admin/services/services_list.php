@@ -46,7 +46,7 @@
                                     <i class="fas fa-fw fa-eye"></i>
                                 </button>
                             </a>
-                            <a href="<?php echo base_url('Service_Header_Edit/'.$item['id']); ?>" style="text-decoration: none;">
+                            <a href="<?php echo base_url('Service_Header_Edit'); ?>" style="text-decoration: none;">
                                 <button type="button" title="Update" class="btn btn-outline-warning">
                                     <i class="fas fa-fw fa-pen"></i>
                                 </button>
