@@ -145,6 +145,10 @@ class Admin_Model extends CI_Model{
         return $this->db->get('service')->result_array();
     }
 
+    public function a_get_service_list() {
+        return $this->db->order_by('id', 'DESC')->get('service_list')->result_array();
+    }
+
     public function a_get_service_single_data($id) {
         return $this->db->where('id', $id)->get('service')->row_array();
     }
@@ -157,6 +161,22 @@ class Admin_Model extends CI_Model{
 
         $this->db->where('id', $id)->delete('service');
 
+    }
+
+    public function a_service_list_create($data_xss_cleaned) {
+        $this->db->limit(9)->insert('service_list', $data_xss_cleaned);
+    }
+
+    public function a_get_service_list_data($id) {
+        return $this->db->where('id', $id)->get('service_list')->row_array();
+    }
+
+    public function a_service_list_edit($id, $data_xss_cleaned) {
+        $this->db->where('id', $id)->update("service_list", $data_xss_cleaned);
+    }
+
+    public function a_service_list_delete($id) {
+        $this->db->where('id', $id)->delete('service_list');
     }
 
 }

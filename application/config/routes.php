@@ -92,7 +92,11 @@ $route['Service_Header_Create_Act']     = 'Admin_Controller/service_header_creat
 $route['Service_Header_Edit']           = 'Admin_Controller/service_header_edit';
 $route['Service_Header_Edit_Act']       = 'Admin_Controller/service_header_edit_act';
 $route['Service_Header_Delete/(.*)']    = 'Admin_Controller/service_header_delete/$1';
-$route['Service_Create']                = 'Admin_Controller/service_create';
+$route['Service_Create']                = 'Admin_Controller/service_list_create';
+$route['Service_List_Create_Act']       = 'Admin_Controller/service_list_create_act';
+$route['Service_List_Update/(.*)']      = 'Admin_Controller/service_list_update/$1';
+$route['Service_List_Update_Act/(.*)']  = 'Admin_Controller/service_list_update_act/$1';
+$route['Service_List_Delete/(.*)']      = 'Admin_Controller/service_list_delete/$1';
 // Product ////////////////////////////////////////////////////////
 $route['Staff_List']               = 'Admin_Controller/staff_list';
 $route['Staff_Create']             = 'Admin_Controller/staff_create';

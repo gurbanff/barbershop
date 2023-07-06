@@ -69,68 +69,20 @@
                 <p style="color: #D7B56D !important" class="d-inline-block bg-secondary text-primary py-1 px-4"><?php echo $service_all_data['first_header']; ?></p>
                 <h2><?php echo $service_all_data['second_header']; ?></h2>
             </div>
+            <?php if($service_list_all_data){ ?>
             <div class="row g-4">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item position-relative overflow-hidden bg-secondary d-flex h-100 p-5 ps-0">
-                        <!-- <div class="bg-dark d-flex flex-shrink-0 align-items-center justify-content-center" style="width: 60px; height: 60px;">
-                            <img  class="img-fluid" src="<?php #echo $directory ?>img/haircut.png" alt="">
-                        </div> -->
-                        <div class="ps-4">
-                            <h3 style="color: #D7B56D !important" class="mb-3">Saç kəsimi</h3>
-                            <p>Hər üz quruluşuna uyğun xüsusi saç kəsim formaları. Həmçinin anatomik saç kəsimi.</p>
-                        </div>
-                        <!-- <a class="btn btn-square" href=""><i class="fa fa-plus text-primary"></i></a> -->
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item position-relative overflow-hidden bg-secondary d-flex h-100 p-5 ps-0">
-                        <!-- <div class="bg-dark d-flex flex-shrink-0 align-items-center justify-content-center" style="width: 60px; height: 60px;">
-                            <img class="img-fluid" src="<?php echo $directory ?>img/beard-trim.png" alt="">
-                        </div> -->
-                        <div class="ps-4">
-                            <h3 style="color: #D7B56D !important" class="mb-3">Saqqal kəsimi</h3>
-                            <p>Seyrək saqqallara forma verilməsi. Özəl buxar vasitəsiylə saqqalın ülgüc ilə təraş edilməsi.</p>
-                        </div>
-                        <!-- <a class="btn btn-square" href=""><i class="fa fa-plus text-primary"></i></a> -->
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item position-relative overflow-hidden bg-secondary d-flex h-100 p-5 ps-0">
-                        <!-- <div class="bg-dark d-flex flex-shrink-0 align-items-center justify-content-center" style="width: 60px; height: 60px;">
-                            <img class="img-fluid" src="<?php echo $directory ?>img/mans-shave.png" alt="">
-                        </div> -->
-                        <div class="ps-4">
-                            <h3 style="color: #D7B56D !important" class="mb-3">Saç darama</h3>
-                            <p>Gedəcəyiniz tədbirə uyğun saçların daranması. Seyrək saçların topik vasitəsylə örtülməsi.</p>
-                        </div>
-                        <!-- <a class="btn btn-square" href=""><i class="fa fa-plus text-primary"></i></a> -->
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item position-relative overflow-hidden bg-secondary d-flex h-100 p-5 ps-0">
-                        <div class="ps-4">
-                            <h3 style="color: #D7B56D !important" class="mb-3">Saç boyama</h3>
-                            <p>Hər növ saçların peşəkar boyanması. Ağ saçların mikro boya ilə örtünməsi.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item position-relative overflow-hidden bg-secondary d-flex h-100 p-5 ps-0">
-                        <div class="ps-4">
-                            <h3 style="color: #D7B56D !important" class="mb-3">Keratin + Perma</h3>
-                            <p>Orijinal schwarzkopf məhsulları ilə saçların düzləşdirilməsi və həmçinin burulması</p>
-                        </div>
-                    </div>
-                </div>
+                <?php foreach($service_list_all_data as $item){ ?>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="service-item position-relative overflow-hidden bg-secondary d-flex h-100 p-5 ps-0">
                         <div class="ps-4">
-                            <h3 style="color: #D7B56D !important" class="mb-3">Üz təmizlənməsi</h3>
-                            <p>Hydrafacial aparatında, xüsusi serumlar, birdəfəlik başlıqlar və pilinqlərdən istifadə edilməklə üzün təmizlənməsi.</p>
+                            <h3 style="color: #D7B56D !important" class="mb-3"><?php echo $item['first_heading']; ?></h3>
+                            <p><?php echo $item['second_header']; ?></p>
                         </div>
                     </div>
                 </div>
+                <?php } ?>
             </div>
+            <?php } ?>
         </div>
     </div>
 <?php } ?>

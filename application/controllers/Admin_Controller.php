@@ -799,6 +799,7 @@ class Admin_Controller extends CI_Controller
     public function service_list() {
 
         $data['get_service_data'] = $this->Admin_Model->a_get_service_data_list();
+        $data['get_list_data']    = $this->Admin_Model->a_get_service_list();
 
         $this->load->view('admin/services/services_list', $data);
     }
@@ -876,7 +877,7 @@ class Admin_Controller extends CI_Controller
 
     }
 
-    public function service_create() {
+    public function service_list_create() {
 
             $this->load->view('admin/services/service_create');
 //        $ifCreateAct = $this->Admin_Model->xl_return_rows("services", "id");
@@ -889,8 +890,65 @@ class Admin_Controller extends CI_Controller
 
     }
 
-    public function testfile() {
-        $this->load->view('admin/slider/test');
+    public function service_list_create_act() {
+
+        $first_heading  = $_POST['first_heading'];
+        $second_area    = $_POST['second_area'];
+
+        if(!empty($first_heading) && !empty($second_area)) {
+
+            $data = [
+                "first_heading" => $first_heading,
+                "second_header" => $second_area
+            ];
+
+            $data_xss_cleaned = $this->security->xss_clean($data);
+            $this->Admin_Model->a_service_list_create($data_xss_cleaned);
+            redirect(base_url("Service_List"));
+
+        } else {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+
+    }
+
+    public function service_list_update($id){
+
+        $ifCreateAct = $this->Admin_Model->xl_return_rows("service_list", "id");
+        if ($ifCreateAct == (-1)) {
+            redirect(base_url('Service_Create'));
+        } else {
+            $data['get_service_data'] = $this->Admin_Model->a_get_service_list_data($this->Admin_Model->xl_return_rows("service_list", "id"));
+            $this->load->view('admin/services/service_edit', $data);
+        }
+
+    }
+
+    public function service_list_update_act($id) {
+
+        $first_heading  = $_POST['first_heading'];
+        $second_area    = $_POST['second_area'];
+
+        if(!empty($first_heading) && !empty($second_area)) {
+
+            $data = [
+              "first_heading" => $first_heading,
+              "second_header" => $second_area
+            ];
+
+            $data_xss_cleaned = $this->security->xss_clean($data);
+            $this->Admin_Model->a_service_list_edit($id, $data_xss_cleaned);
+            redirect(base_url('Service_List'));
+
+        } else {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+
+    }
+
+    public function service_list_delete($id) {
+        $this->Admin_Model->a_service_list_delete($this->Admin_Model->xl_return_rows("service_list", "id"));
+        redirect(base_url('Service_List'));
     }
 
 }
