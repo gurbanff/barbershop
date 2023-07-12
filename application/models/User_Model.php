@@ -37,4 +37,17 @@ class User_Model extends CI_Model{
         return $this->db->limit(9)->get('service_list')->result_array();
     }
 
+    public function u_get_price_all_data() {
+        return $this->db->order_by("id", "desc")->limit(1)->get("price")->row_array();
+    }
+
+    public function u_get_w_hours_all_data() {
+        return $this->db->limit(1)->get("working_hours")->row_array();
+    }
+
+    public function u_get_wh_time_all_data() {
+        return $this->db->limit(7)->get("wh_time")->result_array();
+    }
+
+
 }

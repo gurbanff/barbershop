@@ -179,4 +179,60 @@ class Admin_Model extends CI_Model{
         $this->db->where('id', $id)->delete('service_list');
     }
 
+    public function a_price_create($data_xss_cleaned) {
+        $this->db->insert("price", $data_xss_cleaned);
+    }
+
+    public function a_get_price_data($id) {
+        return $this->db->where("id", $id)->get('price')->row_array();
+    }
+
+    public function a_price_edit($id, $data_xss_cleaned) {
+        $this->db->where('id', $id)->update("price", $data_xss_cleaned);
+    }
+
+    public function a_price_delete($id) {
+        $this->db->where('id', $id)->delete("price");
+    }
+
+    public function a_get_whours_data_list() {
+        return $this->db->get("working_hours")->result_array();
+    }
+
+    public function a_get_wh_time_data_list() {
+        return $this->db->get("wh_time")->result_array();
+    }
+
+    public function a_working_hours_title_create($data_xss_cleaned) {
+        $this->db->insert("working_hours", $data_xss_cleaned);
+    }
+
+    public function a_working_hours_title_edit($id, $data_xss_cleaned) {
+        $this->db->where('id', $id)->update("working_hours", $data_xss_cleaned);
+    }
+
+    public function a_get_w_hours_data($id) {
+        return $this->db->where("id", $id)->get("working_hours")->row_array();
+    }
+
+    public function a_working_hours_delete($id) {
+        $this->db->where("id", $id)->delete("working_hours");
+    }
+
+    public function a_wh_time_create($data_xss_cleaned) {
+        $this->db->insert("wh_time", $data_xss_cleaned);
+    }
+
+    public function a_get_wh_time_edit_data($id) {
+        return $this->db->where("id", $id)->get("wh_time")->row_array();
+    }
+
+    public function a_wh_time_edit_act($id, $data_xss_cleaned) {
+        $this->db->where('id', $id)->update("working_hours", $data_xss_cleaned);
+    }
+
+    public function a_wh_time_delete($id) {
+        $this->db->where("id", $id)->delete("wh_time");
+    }
+
 }

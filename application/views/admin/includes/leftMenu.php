@@ -1,4 +1,5 @@
 <?php $directory = base_url('public/admin/assets/'); ?>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 <!-- Page Wrapper -->
 <div id="wrapper">
 
@@ -74,7 +75,29 @@
             </a>
             <div id="services" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="<?php echo base_url('Service_List'); ?>">List</a>
+                    <a class="collapse-item" href="<?php echo base_url('Service_List'); ?>"> <i class="bx bx-right-arrow"></i> List</a>
+                    <a class="collapse-item" href="<?php echo base_url('Service_Create'); ?>">Create</a>
+                </div>
+            </div>
+        </li>
+        <hr class="sidebar-divider d-none d-md-block">
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="<?php echo base_url('Price_Create'); ?>" data-target="#prices"
+               aria-expanded="true" aria-controls="services">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Prices</span>
+            </a>
+        </li>
+        <hr class="sidebar-divider d-none d-md-block">
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#w_hours"
+               aria-expanded="true" aria-controls="services">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Working Hours</span>
+            </a>
+            <div id="w_hours" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="<?php echo base_url('Working_Hours_List'); ?>">List</a>
                     <a class="collapse-item" href="<?php echo base_url('Service_Create'); ?>">Create</a>
                 </div>
             </div>

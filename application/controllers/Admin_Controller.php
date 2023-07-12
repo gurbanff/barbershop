@@ -913,7 +913,6 @@ class Admin_Controller extends CI_Controller
     }
 
     public function service_list_update($id){
-
         $ifCreateAct = $this->Admin_Model->xl_return_rows("service_list", "id");
         if ($ifCreateAct == (-1)) {
             redirect(base_url('Service_Create'));
@@ -921,7 +920,6 @@ class Admin_Controller extends CI_Controller
             $data['get_service_data'] = $this->Admin_Model->a_get_service_list_data($this->Admin_Model->xl_return_rows("service_list", "id"));
             $this->load->view('admin/services/service_edit', $data);
         }
-
     }
 
     public function service_list_update_act($id) {
@@ -949,6 +947,288 @@ class Admin_Controller extends CI_Controller
     public function service_list_delete($id) {
         $this->Admin_Model->a_service_list_delete($this->Admin_Model->xl_return_rows("service_list", "id"));
         redirect(base_url('Service_List'));
+    }
+
+    public function price_create() {
+        $ifPriceCreateAct = $this->Admin_Model->xl_return_rows("price", "id");
+            if ($ifPriceCreateAct == (-1)) {
+                $this->load->view('admin/price/price_create');
+            } else {
+                $data['get_price_data'] = $this->Admin_Model->a_get_price_data($this->Admin_Model->xl_return_rows("price", "id"));
+                redirect(base_url('Price_Edit'));
+            }
+    }
+
+    public function price_create_act() {
+        $price_h1_text      = $this->input->post('input_price_base_h1_text');
+        $price_arr_text     = implode("[price_separator_text]", $this->input->post('input_price_text'));
+        $price_arr_value    = implode("[price_separator_value]", $this->input->post('input_price_value'));
+        $price_arr_currency = implode("[price_separator_currency]", $this->input->post('input_currency'));
+
+       if(!empty($price_h1_text)&& !empty($price_arr_text) && !empty($price_arr_value) && !empty($price_arr_currency)) {
+           $config['upload_path']      = './uploads/admin/price/';
+           $config['allowed_types']    = 'jpg|png|jpeg|JPG|JPEG|mp4';
+           $config['remove_spaces']    = TRUE;
+           $config['file_ext_tolower'] = TRUE;
+           $config['encrypt_name']     = TRUE;
+           $this->upload->initialize($config);
+
+           if ($this->upload->do_upload('input_price_lending_img')) {
+               $price_img = $this->upload->data('file_name');
+
+               $data = [
+                   "price_h1_text"          => $price_h1_text,
+                   "price_arr_text"         => $price_arr_text,
+                   "price_arr_value"        => $price_arr_value,
+                   "price_arr_currency"     => $price_arr_currency,
+                   "price_img"              => $price_img
+               ];
+
+               $data_xss_cleaned = $this->security->xss_clean($data);
+               $this->Admin_Model->a_price_create($data_xss_cleaned);
+               redirect(base_url('Price_Edit'));
+           } else {
+               $data = [
+                   "price_h1_text"          => $price_h1_text,
+                   "price_arr_text"         => $price_arr_text,
+                   "price_arr_value"        => $price_arr_value,
+                   "price_arr_currency"     => $price_arr_currency
+               ];
+
+               $data_xss_cleaned = $this->security->xss_clean($data);
+               $this->Admin_Model->a_price_create($data_xss_cleaned);
+               redirect(base_url('Price_Edit'));
+           }
+
+       } else {
+            redirect($_SERVER['HTTP_REFERER']);
+       }
+
+    }
+
+    public function price_edit() {
+        $ifPriceEditAct = $this->Admin_Model->xl_return_rows("price", "id");
+            if ($ifPriceEditAct == (-1)) {
+                redirect(base_url("Price_Create"));
+            } else {
+                $data['get_price_data'] = $this->Admin_Model->a_get_price_data($this->Admin_Model->xl_return_rows("price", "id"));
+                $this->load->view('admin/price/price_edit', $data);
+            }
+    }
+
+    public function price_edit_act() {
+        $price_h1_text      = $this->input->post('input_price_base_h1_text');
+        $price_arr_text     = implode("[price_separator_text]", $this->input->post('input_price_text'));
+        $price_arr_value    = implode("[price_separator_value]", $this->input->post('input_price_value'));
+        $price_arr_currency = implode("[price_separator_currency]", $this->input->post('input_currency'));
+
+        if(true) {
+            $config['upload_path']      = './uploads/admin/price/';
+            $config['allowed_types']    = 'jpg|png|jpeg|JPG|JPEG|mp4';
+            $config['remove_spaces']    = TRUE;
+            $config['file_ext_tolower'] = TRUE;
+            $config['encrypt_name']     = TRUE;
+            $this->upload->initialize($config);
+
+            if ($this->upload->do_upload('input_price_lending_img')) {
+                $price_img = $this->upload->data('file_name');
+
+                $data = [
+                    "price_h1_text"          => $price_h1_text,
+                    "price_arr_text"         => $price_arr_text,
+                    "price_arr_value"        => $price_arr_value,
+                    "price_arr_currency"     => $price_arr_currency,
+                    "price_img"              => $price_img
+                ];
+
+                $data_xss_cleaned = $this->security->xss_clean($data);
+                $this->Admin_Model->a_price_edit($this->Admin_Model->xl_return_rows("price", "id"), $data_xss_cleaned);
+                redirect(base_url('Price_Edit'));
+            } else {
+                $data = [
+                    "price_h1_text"          => $price_h1_text,
+                    "price_arr_text"         => $price_arr_text,
+                    "price_arr_value"        => $price_arr_value,
+                    "price_arr_currency"     => $price_arr_currency
+                ];
+
+                $data_xss_cleaned = $this->security->xss_clean($data);
+                $this->Admin_Model->a_price_edit($this->Admin_Model->xl_return_rows("price", "id"), $data_xss_cleaned);
+                redirect(base_url('Price_Edit'));
+            }
+
+        } else {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function price_delete($id) {
+        $this->Admin_Model->a_price_delete($this->Admin_Model->xl_return_rows("price", "id"));
+        redirect(base_url('Price_Create'));
+    }
+
+    public function working_hours_list() {
+        $data['get_all_data']         = $this->Admin_Model->a_get_whours_data_list();
+        $data['get_wh_time_all_data'] = $this->Admin_Model->a_get_wh_time_data_list();
+        $this->load->view('admin/working_hours/working_hours_list', $data);
+    }
+
+    public function working_hours_create() {
+        $ifWHoursCreateAct = $this->Admin_Model->xl_return_rows("working_hours", "id");
+        if ($ifWHoursCreateAct == (-1)) {
+            $this->load->view('admin/working_hours/working_hours_create');
+        } else {
+            redirect(base_url("Working_Hours_Edit"));
+        }
+    }
+
+    public function working_hours_create_act() {
+        $w_hours_p_text     = $this->input->post("w_hours_p_text");
+        $w_hours_h1_text    = $this->input->post("w_hours_h1_text");
+
+        if (!empty($w_hours_p_text) && !empty($w_hours_h1_text)) {
+            $config['upload_path']      = './uploads/admin/working_hours/';
+            $config['allowed_types']    = 'png|jpg|jpeg|JPG|JPEG|';
+            $config['remove_spaces']    = TRUE;
+            $config['file_ext_tolower'] = TRUE;
+            $config['encrypt_name']     = TRUE;
+            $this->upload->initialize($config);
+
+            if ($this->upload->do_upload('working_hours_file')) {
+                $w_hours_img = $this->upload->data("file_name");
+
+                $data = [
+                    "w_hours_p_text"  => $w_hours_p_text,
+                    "w_hours_h1_text" => $w_hours_h1_text,
+                    "w_hours_img"     => $w_hours_img
+                ];
+
+                $data_xss_cleaned = $this->security->xss_clean($data);
+                $this->Admin_Model->a_working_hours_title_create($data_xss_cleaned);
+                redirect(base_url("Working_Hours_List"));
+
+            } else {
+                $data = [
+                    "w_hours_p_text"  => $w_hours_p_text,
+                    "w_hours_h1_text" => $w_hours_h1_text,
+                ];
+
+                $data_xss_cleaned = $this->security->xss_clean($data);
+                $this->Admin_Model->a_working_hours_title_create($data_xss_cleaned);
+                redirect(base_url("Working_Hours_List"));
+            }
+        } else {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+
+    }
+
+    public function working_hours_edit() {
+        $ifWHoursEditAct = $this->Admin_Model->xl_return_rows("working_hours", "id");
+            if ($ifWHoursEditAct == (-1)) {
+                redirect(base_url("Working_Hours_Create"));
+            } else {
+                $data['get_w_hours_edit'] = $this->Admin_Model->a_get_w_hours_data($this->Admin_Model->xl_return_rows("working_hours", "id"));
+                $this->load->view('admin/working_hours/working_hours_edit', $data);
+            }
+    }
+
+    public function working_hours_edit_act() {
+        $w_hours_p_text     = $this->input->post("w_hours_p_text");
+        $w_hours_h1_text    = $this->input->post("w_hours_h1_text");
+
+        if (!empty($w_hours_p_text) && !empty($w_hours_h1_text)) {
+            $config['upload_path']      = './uploads/admin/working_hours/';
+            $config['allowed_types']    = 'png|jpg|jpeg|JPG|JPEG|';
+            $config['remove_spaces']    = TRUE;
+            $config['file_ext_tolower'] = TRUE;
+            $config['encrypt_name']     = TRUE;
+            $this->upload->initialize($config);
+
+            if ($this->upload->do_upload('working_hours_file')) {
+                $w_hours_img = $this->upload->data("file_name");
+
+                $data = [
+                    "w_hours_p_text"  => $w_hours_p_text,
+                    "w_hours_h1_text" => $w_hours_h1_text,
+                    "w_hours_img"     => $w_hours_img
+                ];
+
+                $data_xss_cleaned = $this->security->xss_clean($data);
+                $this->Admin_Model->a_working_hours_title_edit($this->Admin_Model->xl_return_rows("working_hours", "id"), $data_xss_cleaned);
+                redirect(base_url("Working_Hours_List"));
+
+            } else {
+                $data = [
+                    "w_hours_p_text"  => $w_hours_p_text,
+                    "w_hours_h1_text" => $w_hours_h1_text,
+                ];
+
+                $data_xss_cleaned = $this->security->xss_clean($data);
+                $this->Admin_Model->a_working_hours_title_edit($this->Admin_Model->xl_return_rows("working_hours", "id"), $data_xss_cleaned);
+                redirect(base_url("Working_Hours_List"));
+            }
+        } else {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function working_hours_delete($id) {
+        $this->Admin_Model->a_working_hours_delete($this->Admin_Model->xl_return_rows("working_hours", "id"));
+        redirect(base_url("Working_Hours_Create"));
+    }
+
+    public function wh_time_create() {
+        $this->load->view('admin/working_hours/wh_time_create');
+    }
+
+    public function wh_time_create_act() {
+        $wh_week     = $this->input->post('week');
+        $wh_start    = $this->input->post('start_time');
+        $wh_close    = $this->input->post('close_time');
+
+        if (!empty($wh_week) && !empty($wh_start) && !empty($wh_close)) {
+            $data = [
+                "week"       => $wh_week,
+                "start_time" => $wh_start,
+                "close_time" => $wh_close
+            ];
+            $data_xss_cleaned = $this->security->xss_clean($data);
+            $this->Admin_Model->a_wh_time_create($data_xss_cleaned);
+            redirect(base_url('Working_Hours_List'));
+        } else {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function wh_time_edit($id) {
+        $data['get_wh_time_edit_data'] = $this->Admin_Model->a_get_wh_time_edit_data($id);
+        $this->load->view('admin/working_hours/wh_time_edit', $data);
+    }
+
+    public function wh_time_edit_act($id) {
+        $wh_week     = $this->input->post('week');
+        $wh_start    = $this->input->post('start_time');
+        $wh_close    = $this->input->post('close_time');
+
+        if (!empty($wh_week) && !empty($wh_start) && !empty($wh_close)) {
+            $data = [
+                "week"       => $wh_week,
+                "start_time" => $wh_start,
+                "close_time" => $wh_close
+            ];
+            $id = $this->security->xss_clean($id);
+            $data_xss_cleaned = $this->security->xss_clean($data);
+            $this->Admin_Model->a_wh_time_edit_act($data_xss_cleaned);
+            redirect(base_url('Working_Hours_List'));
+        } else {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function wh_time_delete($id) {
+        $this->Admin_Model->a_wh_time_delete($id);
+        redirect(base_url("Wh_Time_Create"));
     }
 
 }

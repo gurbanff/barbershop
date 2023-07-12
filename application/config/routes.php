@@ -97,6 +97,25 @@ $route['Service_List_Create_Act']       = 'Admin_Controller/service_list_create_
 $route['Service_List_Update/(.*)']      = 'Admin_Controller/service_list_update/$1';
 $route['Service_List_Update_Act/(.*)']  = 'Admin_Controller/service_list_update_act/$1';
 $route['Service_List_Delete/(.*)']      = 'Admin_Controller/service_list_delete/$1';
+// Price /////////////////////////////////////////////////////////////////
+$route['Price_Create']             = 'Admin_Controller/price_create';
+$route['Price_Create_Act']         = 'Admin_Controller/price_create_act';
+$route['Price_Edit']               = 'Admin_Controller/price_edit';
+$route['Price_Edit_Act']           = 'Admin_Controller/price_edit_act';
+$route['Price_Delete']             = 'Admin_Controller/price_delete';
+// Working Hours //////////////////////////////////////////////////
+$route['Working_Hours_List']            = 'Admin_Controller/working_hours_list';
+$route['Working_Hours_Create']          = 'Admin_Controller/working_hours_create';
+$route['Working_Hours_Create_Act']      = 'Admin_Controller/working_hours_create_act';
+$route['Working_Hours_Edit']            = 'Admin_Controller/working_hours_edit';
+$route['Working_Hours_Edit_Act']        = 'Admin_Controller/working_hours_edit_act';
+$route['Working_Hours_Edit_Act']        = 'Admin_Controller/working_hours_edit_act';
+$route['Working_Hours_Delete/(.*)']     = 'Admin_Controller/working_hours_delete/$1';
+$route['Wh_Time_Create']                = 'Admin_Controller/wh_time_create';
+$route['Wh_Time_Create_Act']            = 'Admin_Controller/wh_time_create_act';
+$route['Wh_Time_Edit/(.*)']             = 'Admin_Controller/wh_time_edit/$1';
+$route['Wh_Time_Edit_Act/(.*)']         = 'Admin_Controller/wh_time_edit_act/$1';
+$route['Wh_Time_Delete/(.*)']           = 'Admin_Controller/wh_time_delete/$1';
 // Product ////////////////////////////////////////////////////////
 $route['Staff_List']               = 'Admin_Controller/staff_list';
 $route['Staff_Create']             = 'Admin_Controller/staff_create';

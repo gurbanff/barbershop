@@ -9,7 +9,7 @@
             <h6 class="m-0 font-weight-bold text-warning">About Update Page</h6>
             <a onclick="return confirm('Siz bu Məlumatları silmək üzərəsiniz!');" href="<?php echo base_url('About_Delete'); ?>" class="btn btn-danger btn-icon-split">
             <span class="icon text-white-50">
-                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-trash"></i>
             </span>
                 <span class="text">Delete</span>
             </a>

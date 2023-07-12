@@ -90,42 +90,22 @@
 
 
     <!-- Price Start -->
+<?php if ($price_all_data){ ?>
     <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-0">
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                     <div class="bg-secondary h-100 d-flex flex-column justify-content-center p-5">
                         <p style="color: #D7B56D !important" class="d-inline-flex bg-dark text-primary py-1 px-4 me-auto">Qiymətlər</p>
-                        <h2 class="mb-4">Qiymətlərimizlə tanış olun</h2>
+                        <h2 class="mb-4"><?php echo $price_all_data['price_h1_text']; ?></h2>
                         <div>
-                            <div class="d-flex justify-content-between border-bottom py-2">
-                                <h6 class="mb-0">Saç kəsimi</h6>
-                                <span style="color: #D7B56D !important" class="text-primary">20 AZN</span>
-                            </div>
-                            <div class="d-flex justify-content-between border-bottom py-2">
-                                <h6 class="mb-0">Saqqal kəsimi</h6>
-                                <span style="color: #D7B56D !important" class="text-primary">5-15 AZN</span>
-                            </div>
-                            <div class="d-flex justify-content-between border-bottom py-2">
-                                <h6 class="mb-0">Təraş</h6>
-                                <span style="color: #D7B56D !important" class="text-primary">10-20 AZN</span>
-                            </div>
-                            <div class="d-flex justify-content-between border-bottom py-2">
-                                <h6 class="mb-0">Saç boyama</h6>
-                                <span style="color: #D7B56D !important" class="text-primary">15-30 AZN</span>
-                            </div>
-                            <div class="d-flex justify-content-between border-bottom py-2">
-                                <h6 class="mb-0">Keratin + Perma</h6>
-                                <span style="color: #D7B56D !important" class="text-primary">30-150 AZN</span>
-                            </div>
-                            <div class="d-flex justify-content-between border-bottom py-2">
-                                <h6 class="mb-0">Saç darama</h6>
-                                <span style="color: #D7B56D !important" class="text-primary">5-15 AZN</span>
-                            </div>
-                            <div class="d-flex justify-content-between py-2">
-                                <h6 class="mb-0">VİP saç kəsimi</h6>
-                                <span style="color: #D7B56D !important" class="text-primary">30-50 AZN</span>
-                            </div>
+                            <?php
+                                for ($price_index = 0; $price_index < count(explode("[price_separator_text]", $price_all_data["price_arr_text"])); $price_index++) { ?>
+                                <div class="d-flex justify-content-between border-bottom py-2">
+                                    <h6 class="mb-0"><?php echo explode("[price_separator_text]", $price_all_data["price_arr_text"])[$price_index]; ?></h6>
+                                    <span style="color: #D7B56D !important; text-transform:uppercase;" class="text-primary"><?php echo explode("[price_separator_value]", $price_all_data["price_arr_value"])[$price_index] . " " . explode("[price_separator_currency]", $price_all_data["price_arr_currency"])[$price_index]; ?></span>
+                                </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -137,6 +117,7 @@
             </div>
         </div>
     </div>
+<?php } ?>
     <!-- Price End -->
 
 
@@ -192,49 +173,34 @@
 
 
     <!-- Working Hours Start -->
+<?php if ($w_hours_all_data){ ?>
     <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-0">
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                     <div class="h-100">
-                        <img class="img-fluid h-100" src="<?php echo $directory ?>img/open.jpg" alt="">
+                        <img class="img-fluid h-100" src="<?php echo base_url('uploads/admin/working_hours/').$w_hours_all_data['w_hours_img']; ?>" alt="">
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                     <div class="bg-secondary h-100 d-flex flex-column justify-content-center p-5">
-                        <p style="color: #D7B56D !important" class="d-inline-flex bg-dark text-primary py-1 px-4 me-auto">İş saatlarımız</p>
-                        <h2 class="mb-4">Ödənişsiz dayanacağımız mövcuddur</h2>
+                        <p style="color: #D7B56D !important" class="d-inline-flex bg-dark text-primary py-1 px-4 me-auto"><?php echo $w_hours_all_data['w_hours_p_text']; ?></p>
+                        <h2 class="mb-4"><?php echo $w_hours_all_data['w_hours_h1_text']; ?></h2>
+
                         <div>
-                            <div class="d-flex justify-content-between border-bottom py-2">
-                                <h6 class="mb-0">Bazar ertəsi</h6>
-                                <span>10:00-21:00</span>
-                            </div>
-                            <div class="d-flex justify-content-between border-bottom py-2">
-                                <h6 class="mb-0">Çərşəmbə axşamı</h6>
-                                <span>10:00-21:00</span>
-                            </div>
-                            <div class="d-flex justify-content-between border-bottom py-2">
-                                <h6 class="mb-0">Çərşəmbə</h6>
-                                <span>10:00-21:00</span>
-                            </div>
-                            <div class="d-flex justify-content-between border-bottom py-2">
-                                <h6 class="mb-0">Cümə axşamı</h6>
-                                <span>10:00-21:00</span>
-                            </div>
-                            <div class="d-flex justify-content-between border-bottom py-2">
-                                <h6 class="mb-0">Cümə</h6>
-                                <span>10:00-21:00</span>
-                            </div>
-                            <div class="d-flex justify-content-between py-2">
-                                <h6 class="mb-0">Şənbə / Bazar</h6>
-                                <span>10:00-20:00</span>
-                            </div>
+                            <?php foreach($wh_time_all_data as $item) { ?>
+                                <div class="d-flex justify-content-between border-bottom py-2">
+                                    <h6 class="mb-0"><?php echo $item['week']; ?></h6>
+                                    <span><?php echo $item['start_time']; ?>-<?php echo $item['close_time']; ?></span>
+                                </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <?php } ?>
     <!-- Working Hours End -->
 
 

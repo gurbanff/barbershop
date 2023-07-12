@@ -23,6 +23,9 @@ class User_Controller extends CI_Controller {
         $data['about_all_data']         = $this->User_Model->u_get_about_data();
         $data['service_all_data']       = $this->User_Model->u_get_service_data();
         $data['service_list_all_data']  = $this->User_Model->u_get_service_list_data();
+        $data['price_all_data']         = $this->User_Model->u_get_price_all_data();
+        $data['w_hours_all_data']       = $this->User_Model->u_get_w_hours_all_data();
+        $data['wh_time_all_data']       = $this->User_Model->u_get_wh_time_all_data();
         $this->load->view('user/index', $data);
     }
 
