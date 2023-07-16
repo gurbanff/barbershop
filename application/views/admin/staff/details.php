@@ -2,7 +2,6 @@
 <?php $this->load->view('admin/includes/bodyUp'); ?>
 <?php $this->load->view('admin/includes/leftMenu'); ?>
 <?php $this->load->view('admin/includes/nav'); ?>
-<?php $this->load->view('admin/includes/statistics'); ?>
 <style>
     .success_st, .danger_st
     {

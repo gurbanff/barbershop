@@ -90,20 +90,6 @@
         </li>
         <hr class="sidebar-divider d-none d-md-block">
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#w_hours"
-               aria-expanded="true" aria-controls="services">
-                <i class="fas fa-fw fa-folder"></i>
-                <span>Working Hours</span>
-            </a>
-            <div id="w_hours" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="<?php echo base_url('Working_Hours_List'); ?>">List</a>
-                    <a class="collapse-item" href="<?php echo base_url('Service_Create'); ?>">Create</a>
-                </div>
-            </div>
-        </li>
-        <hr class="sidebar-divider d-none d-md-block">
-        <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                aria-expanded="true" aria-controls="collapsePages">
                 <i class="fas fa-fw fa-folder"></i>
@@ -116,11 +102,48 @@
                 </div>
             </div>
         </li>
-
-
-        <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
-
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#w_hours"
+               aria-expanded="true" aria-controls="services">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Working Hours</span>
+            </a>
+            <div id="w_hours" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="<?php echo base_url('Working_Hours_List'); ?>">List</a>
+                    <a class="collapse-item" href="<?php echo base_url('Working_Hours_Create'); ?>">Create</a>
+                </div>
+            </div>
+        </li>
+        <hr class="sidebar-divider d-none d-md-block">
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#review"
+               aria-expanded="true" aria-controls="services">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Reviews</span>
+            </a>
+            <div id="review" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="<?php echo base_url('Review_List'); ?>">List</a>
+                    <a class="collapse-item" href="<?php echo base_url('Review_Create'); ?>">Create</a>
+                </div>
+            </div>
+        </li>
+        <hr class="sidebar-divider d-none d-md-block">
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Footer"
+               aria-expanded="true" aria-controls="services">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Footer</span>
+            </a>
+            <div id="Footer" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="<?php echo base_url('Footer_List'); ?>">List</a>
+                    <a class="collapse-item" href="<?php echo base_url('Footer_Ct_Create'); ?>">Create</a>
+                </div>
+            </div>
+        </li>
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
             <button class="rounded-circle border-0" id="sidebarToggle"></button>

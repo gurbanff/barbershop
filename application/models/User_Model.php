@@ -49,5 +49,23 @@ class User_Model extends CI_Model{
         return $this->db->limit(7)->get("wh_time")->result_array();
     }
 
+    public function u_get_review_title_all_data() {
+        return $this->db->limit(10)->get("review_title")->row_array();
+    }
 
+    public function u_get_review_fb_all_data() {
+        return $this->db->get("review_feedback")->result_array();
+    }
+
+    public function u_get_footer_ct_all_data() {
+        return $this->db->get("footer_contact")->result_array();
+    }
+
+    public function u_get_footer_connect_all_data() {
+        return $this->db->get("fast_connect")->result_array();
+    }
+
+    public function u_get_news_all_data() {
+        return $this->db->get("news")->result_array();
+    }
 }

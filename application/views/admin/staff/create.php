@@ -3,7 +3,6 @@
 <?php $this->load->view('admin/includes/leftMenu'); ?>
 <?php $this->load->view('admin/includes/nav'); ?>
 
-
 <div class="card shadow mb-4">
     <div class="card-header py-3 d-flex justify-content-between align-items-center">
         <h6 class="m-0 font-weight-bold text-primary">Staff Create</h6>
@@ -15,7 +14,9 @@
         </a>
     </div>
     <div class="card-body">
-
+        <?php if ($this->session->flashdata("err")){ ?>
+            <h1><?php echo $this->session->flashdata("err"); ?></h1>
+        <?php } ?>
         <br>
         <h3 class="text-center text-white bg-primary py-2 rounded">Contact Information</h3>
         <br>
@@ -96,8 +97,9 @@
                         <label for="Position"><b>Position</b></label>
                         <select name="position" id="Position" class="form-control">
                             <option value="">-SELECT-</option>
-                            <option value="Usta">Usta</option>
-                            <option value="Çırak">Çırak</option>
+                            <?php foreach ($get_position_single as $item) { ?>
+                                <option value="<?php echo $item['id']; ?>"><?php echo $item['p_name_en']; ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="col-sm-4 mb-3 mb-sm-0">
@@ -110,9 +112,6 @@
                     </div>
                 </div>
             </div>
-
-
-
 
             <br>
             <h3 class="text-center text-white bg-primary py-2 rounded">Social Network</h3>

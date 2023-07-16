@@ -96,11 +96,9 @@
                         <label for="Position"><b>Position</b></label>
                         <select name="position" id="Position" class="form-control">
                             <option value="">-SELECT-</option>
-                            <option <?php if($single_data['s_position'] == 'Director'){echo "SELECTED";} ?> value="Director">Director</option>
-                            <option <?php if($single_data['s_position'] == 'Manager'){echo "SELECTED";} ?> value="Manager">Manager</option>
-                            <option <?php if($single_data['s_position'] == 'Master'){echo "SELECTED";} ?> value="Master">Master</option>
-                            <option <?php if($single_data['s_position'] == 'Asistent'){echo "SELECTED";} ?> value="Asistent">Asistent</option>
-                            <option <?php if($single_data['s_position'] == 'Other'){echo "SELECTED";} ?> value="Other">Other</option>
+                            <?php foreach ($get_position_single as $item) { ?>
+                                <option value="<?php echo $item['id']; ?>"><?php echo $item['p_name_en']; ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="col-sm-4 mb-3 mb-sm-0">
@@ -113,9 +111,6 @@
                     </div>
                 </div>
             </div>
-
-
-
 
             <br>
             <h3 class="text-center text-white bg-warning py-2 rounded">Social Network</h3>
@@ -155,7 +150,6 @@
             <div class="form-group">
                 <div class="row">
 
-
                     <div class="col-sm-3 mb-3 mb-sm-0">
                         <label for="Status"><b>Status</b></label>
                         <select name="Status" id="Status" class="form-control">
@@ -184,12 +178,7 @@
             <br>
 
             <button type="submit" class="btn btn-outline-success">Update</button>
-
-
         </form>
-
-
-
     </div>
 </div>
 

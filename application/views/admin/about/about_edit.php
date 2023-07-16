@@ -79,7 +79,7 @@
                                     <input type="text" name="about_h2_text" class="form-control" id="h1_text" placeholder="Header Text" value="<?php echo $get_about_edit['about_h2_text']; ?>">
                                 </div>
                                 <div class="col-sm-12 mb-2">
-                                    <textarea name="about_p1_text" class="form-control" type="text" name="" cols="45" rows="4"><?php echo $get_about_edit['about_p1_text']; ?></textarea>
+                                    <textarea name="about_p1_text" class="form-control" type="text" cols="45" rows="4"><?php echo $get_about_edit['about_p1_text']; ?></textarea>
                                 </div>
                                 <div class="row g-4">
                                     <div class="col-md-6">

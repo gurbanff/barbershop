@@ -4,12 +4,13 @@
 <?php $this->load->view('admin/includes/leftMenu'); ?>
 <?php $this->load->view('admin/includes/nav'); ?>
 
+
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">About Create</h6>
-            <a href="<?php echo base_url('About_Create'); ?>" class="btn btn-primary btn-icon-split">
+        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+            <h6 class="m-0 font-weight-bold text-primary">Review Feedback Create List</h6>
+            <a href="<?php echo base_url('Review_List'); ?>" class="btn btn-primary btn-icon-split">
             <span class="icon text-white-50">
-                <i class="fas fa-trash"></i>
+                <i class="fas fa-arrow-left"></i>
             </span>
                 <span class="text">Back</span>
             </a>
@@ -17,10 +18,10 @@
         <div class="card-body">
 
             <br>
-            <h3 class="text-center text-white bg-primary py-2 rounded">About Create</h3>
+            <h3 class="text-center text-white bg-primary py-2 rounded">Review Feedback Create</h3>
             <br>
 
-            <form action="<?php echo base_url('About_Create_Act'); ?>" method="post" enctype="multipart/form-data">
+            <form action="<?php echo base_url('Review_Fb_Create_Act'); ?>" method="post" enctype="multipart/form-data">
 
                 <!-- Tab panes -->
                 <div class="container-xxl py-5">
@@ -31,7 +32,7 @@
                                     <style>
                                         .file_upload_block {
                                             width: 100%;
-                                            height: 400px;
+                                            height: 200px;
                                             display: flex;
                                             flex-direction: column;
                                             justify-content: center;
@@ -58,12 +59,10 @@
                                         }
                                     </script>
                                     <label for="price_lending_img"><b>Image Upload</b></label>
-                                    <input type="file" name="about_file" id="price_lending_img" onchange="setData(this);" hidden>
+                                    <input type="file" name="file" id="price_lending_img" onchange="setData(this);" hidden>
                                     <div class="file_upload_block mb-3">
                                         <i class="fas fa-plus-circle"></i>
                                     </div>
-                                        <input type="text" name="image_h1_text" class="form-control mb-3" placeholder="Left Image Top Text">
-                                        <input type="text" name="image_h2_text" class="form-control"  placeholder="Left Image Bottom Text">
                                     <script>
                                         document.querySelector(".file_upload_block").addEventListener("click", function() {
                                             document.querySelector("#price_lending_img").click();
@@ -73,38 +72,34 @@
                             </div>
                             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                                 <div class="col-sm-8 mb-2">
-                                    <input type="text" name="about_p_text" class="form-control" id="h1_text" placeholder="Right Top Text">
+                                    <label for="h1_text"><b>Name</b></label>
+                                    <input type="text" name="name" class="form-control" id="h1_text" placeholder="name or nickname">
+                                </div>
+                                <div class="col-sm-4 mb-3 mb-sm-0">
+                                    <label for="Position"><b>Position</b></label>
+                                    <select name="position" id="Position" class="form-control">
+                                        <option value="">-SELECT-</option>
+                                        <option value="Mühasib">Mühasib</option>
+                                        <option value="Zərgər">Zərgər</option>
+                                        <option value="Pediatr">Pediatr</option>
+                                        <option value="İstifadəçi">İstifadəçi</option>
+                                    </select>
                                 </div>
                                 <div class="col-sm-12 mb-2">
-                                    <input type="text" name="about_h2_text" class="form-control" id="h1_text" placeholder="Header Text">
-                                </div>
-                                <div class="col-sm-12 mb-2">
-                                    <textarea name="about_p1_text" class="form-control" type="text" cols="45" rows="4"></textarea>
-                                </div>
-                                <div class="row g-4">
-                                    <div class="col-md-6">
-                                        <div class="col-sm-12 mb-2">
-                                            <input type="text" name="about_h3_text" class="form-control" id="h1_text" placeholder="RIght First Text">
-                                        </div>
-                                        <div class="col-sm-12 mb-2">
-                                            <textarea class="form-control" name="about_h3_p_text" type="text" cols="60" rows="5"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="col-sm-12 mb-2">
-                                            <input type="text" name="about_h3_text_2" class="form-control" id="h1_text" placeholder="RIght Second Text">
-                                        </div>
-                                        <div class="col-sm-12 mb-2">
-                                            <textarea class="form-control" name="about_h3_p_text_2" type="text" cols="60" rows="5"></textarea>
-                                        </div>
-                                    </div>
+                                    <label for="message"><b>Message</b></label>
+                                    <textarea name="message" id="message" class="form-control" type="text" cols="45" rows="4"></textarea>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <br>
-                <button type="submit" class="btn btn-outline-success">Create</button>
+                <button type="submit" class="learn-more">
+                            <span class="circle" aria-hidden="true">
+                            <span class="icon arrow"></span>
+                            </span>
+                    <span class="button-text">Create</span>
+                </button>
             </form>
         </div>
     </div>

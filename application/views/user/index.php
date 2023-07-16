@@ -205,31 +205,25 @@
 
 
     <!-- Testimonial Start -->
+<?php if ($review_title_all_data){ ?>
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <p style="color: #D7B56D !important" class="d-inline-block bg-secondary text-primary py-1 px-4">Rəylər</p>
-                <h1>Müştərilərimiz nə düşünür?</h1>
+                <p style="color: #D7B56D !important" class="d-inline-block bg-secondary text-primary py-1 px-4"><?php echo $review_title_all_data['title']; ?></p>
+                <h1><?php echo $review_title_all_data['second_title']; ?></h1>
             </div>
             <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-                <div class="testimonial-item text-center" data-dot="<img class='img-fluid' src='<?php echo $directory ?>img/testimonial-1.jpg' alt=''>">
-                    <h4>Nail bəy</h4>
-                    <p style="color: #D7B56D !important" class="text-primary">Mühasib</p>
-                    <span class="fs-5">Bizə doğma insan, mehriban, pozitiv bərbərimiz İbrahim usta, əlləriniz var olsun, dəyərli sənətkar!</span>
-                </div>
-                <div class="testimonial-item text-center" data-dot="<img class='img-fluid' src='<?php echo $directory ?>img/testimonial-2.jpg' alt=''>">
-                    <h4>Fərid bəy</h4>
-                    <p style="color: #D7B56D !important" class="text-primary">Pediatr</p>
-                    <span class="fs-5">Öz dərin təşəkkürümü bildirirəm ki, ailəvi olaraq bizə layiqli xidmət göstərirsiniz və biz də daima sizə sadiq qalırıq.</span>
-                </div>
-                <div class="testimonial-item text-center" data-dot="<img class='img-fluid' src='<?php echo $directory ?>img/testimonial-3.jpg' alt=''>">
-                    <h4>Ayaz bəy</h4>
-                    <p style="color: #D7B56D !important" class="text-primary">Zərgər</p>
-                    <span class="fs-5">Peşəkar bərbərlikdən savayı, əsl dost, sevimli, pozitiv və gülərüz insan, sənə ən əsası can sağlığı, uzun ömür və gələcək işlərində hər zaman uğur əldə etməyi arzulayıram. </span>
-                </div>
-            </div>      
+                <?php foreach ($review_fb_all_data as $item) { ?>
+                    <div class="testimonial-item text-center" data-dot="<img class='img-fluid' src='<?php echo base_url('uploads/admin/review_feedback/').$item['file']; ?>' alt=''>">
+                        <h4><?php echo $item['name']; ?></h4>
+                        <p style="color: #D7B56D !important" class="text-primary"><?php echo $item['position']; ?></p>
+                        <span class="fs-5"><?php echo $item['message']; ?></span>
+                    </div>
+                <?php } ?>
+            </div>
         </div>
     </div>
+    <?php } ?>
     <!-- Testimonial End -->
 
     
