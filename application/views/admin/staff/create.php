@@ -155,13 +155,14 @@
                     <div class="col-sm-3 mb-3 mb-sm-0">
                         <label for="Status"><b>Status</b></label>
                         <select name="Status" id="Status" class="form-control">
-                            <option value="">-SELECT-</option>
-                            <option value="Active">Active</option>
-                            <option value="Deactive">Deactive</option>
+<!--                            <option value="">Choose</option>-->
+                            <?php foreach ($get_status_single as $item) { ?>
+                                <option value="<?php echo $item['id']; ?>"><?php echo $item['status']; ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                     
-                    <div class="col-sm-4 mb-3 mb-sm-0">Email
+                    <div class="col-sm-4 mb-3 mb-sm-0">
                         <label for="Email"><b>Email</b></label>
                         <input type="text" name="Email" class="form-control" id="Email" placeholder="Email">
                     </div>

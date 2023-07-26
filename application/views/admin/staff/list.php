@@ -47,7 +47,7 @@
                                             <tr>
                                                 <td><?php echo $say; ?></td>
                                                 <td><?php echo $item['s_name_az']; ?> <?php echo $item['s_surname_az']; ?> </td>
-                                                <td><?php echo $item['s_position']; ?></td>
+                                                <td><?php echo $item['p_name_az']; ?></td>
                                                 <td><?php echo $item['s_email']; ?></td>
                                                 
                                                 <td>
@@ -57,7 +57,7 @@
                                                         <?php echo "<b style='color: red;'>Not Selected</b>"; ?>
                                                     <?php } ?>
                                                 </td>
-                                                <td><?php echo $item['s_status']; ?></td>
+                                                <td><?php echo $item['status']; ?></td>
                                                 <td>
                                                     <?php if($item['s_img']){ ?>
                                                         <img width="50px" height="50px" style="object-fit: cover;" src="<?php echo base_url('uploads/admin/staff/'.$item['s_img']) ?>" />

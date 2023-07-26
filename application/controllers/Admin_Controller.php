@@ -1,7 +1,5 @@
 <?php
 
-
-
 class Admin_Controller extends CI_Controller
 {
 
@@ -244,7 +242,7 @@ class Admin_Controller extends CI_Controller
 
     public function staff_list()
     {
-        $data['get_all_data'] = $this->Admin_Model->get_all_data();
+        $data['get_all_data'] = $this->Admin_Model->get_all_select_data();
 
         $this->load->view('admin/staff/list', $data);
     }
@@ -252,6 +250,7 @@ class Admin_Controller extends CI_Controller
     public function staff_create()
     {
         $data['get_position_single'] = $this->Admin_Model->a_get_position_single();
+        $data['get_status_single'] = $this->Admin_Model->a_get_status_single();
         $this->load->view('admin/staff/create', $data);
     }
 
@@ -385,8 +384,9 @@ class Admin_Controller extends CI_Controller
 
     public function staff_edit($id)
     {
-        $data['single_data']         = $this->Admin_Model->a_get_single_staff($id);
+        $data['single_data'] = $this->Admin_Model->a_get_single_staff($id);
         $data['get_position_single'] = $this->Admin_Model->a_get_position_single();
+        $data['get_status_single'] = $this->Admin_Model->a_get_status_single();
         $this->load->view('admin/staff/update', $data);
     }
 
@@ -1253,15 +1253,15 @@ class Admin_Controller extends CI_Controller
 
     public function wh_time_edit_act($id)
     {
-        $wh_week  = $this->input->post('week');
+        $wh_week = $this->input->post('week');
         $wh_start = $this->input->post('start_time');
         $wh_close = $this->input->post('close_time');
 
         if (!empty($wh_week) && !empty($wh_start) && !empty($wh_close)) {
             $data = [
-                "week"          => $wh_week,
-                "start_time"    => $wh_start,
-                "close_time"    => $wh_close
+                "week" => $wh_week,
+                "start_time" => $wh_start,
+                "close_time" => $wh_close
             ];
             $id = $this->security->xss_clean($id);
             $data_xss_cleaned = $this->security->xss_clean($data);
@@ -1280,7 +1280,7 @@ class Admin_Controller extends CI_Controller
 
     public function review_list()
     {
-        $data['get_all_data']           = $this->Admin_Model->a_get_review_list_data();
+        $data['get_all_data'] = $this->Admin_Model->a_get_review_list_data();
         $data['get_review_fb_all_data'] = $this->Admin_Model->a_get_review_fb_list_data();
         $this->load->view('admin/review/review_list', $data);
     }
@@ -1348,37 +1348,39 @@ class Admin_Controller extends CI_Controller
         }
     }
 
-    public function review_delete($id) {
+    public function review_delete($id)
+    {
         $this->Admin_Model->a_review_title_delete($this->Admin_Model->xl_return_rows("review_title", "id"));
         redirect(base_url("Review_Create"));
     }
 
-    public function review_fb_create() {
+    public function review_fb_create()
+    {
         $this->load->view('admin/review/review_fb_create');
     }
 
     public function review_fb_create_act()
     {
-        $name       = $this->input->post("name");
-        $position   = $this->input->post("position");
-        $message    = $this->input->post("message");
+        $name = $this->input->post("name");
+        $position = $this->input->post("position");
+        $message = $this->input->post("message");
 
         if (!empty($name) && !empty($position) && !empty($message)) {
-            $config['upload_path']      = './uploads/admin/review_feedback/';
-            $config['allowed_types']    = 'png|jpg|jpeg|JPG|JPEG|';
-            $config['remove_spaces']    = TRUE;
+            $config['upload_path'] = './uploads/admin/review_feedback/';
+            $config['allowed_types'] = 'png|jpg|jpeg|JPG|JPEG|';
+            $config['remove_spaces'] = TRUE;
             $config['file_ext_tolower'] = TRUE;
-            $config['encrypt_name']     = TRUE;
+            $config['encrypt_name'] = TRUE;
             $this->upload->initialize($config);
 
             if ($this->upload->do_upload('file')) {
                 $file = $this->upload->data("file_name");
 
                 $data = [
-                    "name"      => $name,
-                    "position"  => $position,
-                    "message"   => $message,
-                    "file"      => $file
+                    "name" => $name,
+                    "position" => $position,
+                    "message" => $message,
+                    "file" => $file
                 ];
 
                 $data_xss_cleaned = $this->security->xss_clean($data);
@@ -1389,7 +1391,7 @@ class Admin_Controller extends CI_Controller
                 $data = [
                     "name" => $name,
                     "position" => $position,
-                    "message"   => $message
+                    "message" => $message
                 ];
 
                 $data_xss_cleaned = $this->security->xss_clean($data);
@@ -1402,32 +1404,34 @@ class Admin_Controller extends CI_Controller
 
     }
 
-    public function review_fb_edit($id) {
+    public function review_fb_edit($id)
+    {
         $data['get_review_fb_edit'] = $this->Admin_Model->a_get_review_fb_edit($id);
         $this->load->view('admin/review/review_fb_edit', $data);
     }
 
-    public function review_fb_edit_act($id) {
-        $name       = $this->input->post("name");
-        $position   = $this->input->post("position");
-        $message    = $this->input->post("message");
+    public function review_fb_edit_act($id)
+    {
+        $name = $this->input->post("name");
+        $position = $this->input->post("position");
+        $message = $this->input->post("message");
 
         if (!empty($name) && !empty($position) && !empty($message)) {
-            $config['upload_path']      = './uploads/admin/review_feedback/';
-            $config['allowed_types']    = 'png|jpg|jpeg|JPG|JPEG|';
-            $config['remove_spaces']    = TRUE;
+            $config['upload_path'] = './uploads/admin/review_feedback/';
+            $config['allowed_types'] = 'png|jpg|jpeg|JPG|JPEG|';
+            $config['remove_spaces'] = TRUE;
             $config['file_ext_tolower'] = TRUE;
-            $config['encrypt_name']     = TRUE;
+            $config['encrypt_name'] = TRUE;
             $this->upload->initialize($config);
 
             if ($this->upload->do_upload('file')) {
                 $file = $this->upload->data("file_name");
 
                 $data = [
-                    "name"      => $name,
-                    "position"  => $position,
-                    "message"   => $message,
-                    "file"      => $file
+                    "name" => $name,
+                    "position" => $position,
+                    "message" => $message,
+                    "file" => $file
                 ];
 
                 $data_xss_cleaned = $this->security->xss_clean($data);
@@ -1436,9 +1440,9 @@ class Admin_Controller extends CI_Controller
 
             } else {
                 $data = [
-                    "name"      => $name,
-                    "position"  => $position,
-                    "message"   => $message
+                    "name" => $name,
+                    "position" => $position,
+                    "message" => $message
                 ];
 
                 $data_xss_cleaned = $this->security->xss_clean($data);
@@ -1450,19 +1454,22 @@ class Admin_Controller extends CI_Controller
         }
     }
 
-    public function footer_list() {
+    public function footer_list()
+    {
         $data['get_all_footer_contact'] = $this->Admin_Model->a_get_all_footer_contact();
-        $data['get_all_fast_connect']   = $this->Admin_Model->a_get_all_fast_connect();
-        $data['get_all_news']           = $this->Admin_Model->a_get_all_news();
+        $data['get_all_fast_connect'] = $this->Admin_Model->a_get_all_fast_connect();
+        $data['get_all_news'] = $this->Admin_Model->a_get_all_news();
         $this->load->view('admin/footer/footer_list', $data);
     }
 
-    public function footer_contact_details($id) {
+    public function footer_contact_details($id)
+    {
         $data['footer_contact_single'] = $this->Admin_Model->a_footer_contact_single($id);
         $this->load->view('admin/footer/footer_contact_details', $data);
     }
 
-    public function footer_ct_create() {
+    public function footer_ct_create()
+    {
         $ifFooterContactCreate = $this->Admin_Model->xl_return_rows("footer_contact", "id");
         if ($ifFooterContactCreate == (-1)) {
             $this->load->view('admin/footer/footer_ct_create');
@@ -1471,19 +1478,20 @@ class Admin_Controller extends CI_Controller
         }
     }
 
-    public function footer_ct_create_act() {
-        $title      = $this->input->post('title');
-        $location   = $this->input->post('location');
-        $phone      = $this->input->post('phone');
-        $email      = $this->input->post('email');
+    public function footer_ct_create_act()
+    {
+        $title = $this->input->post('title');
+        $location = $this->input->post('location');
+        $phone = $this->input->post('phone');
+        $email = $this->input->post('email');
 
         if (!empty($title) && !empty($location) && !empty($phone) && !empty($email)) {
 
             $data = [
-                "title"     => $title,
-                "location"  => $location,
-                "phone"     => $phone,
-                "email"     => $email
+                "title" => $title,
+                "location" => $location,
+                "phone" => $phone,
+                "email" => $email
             ];
 
             $data_cleaned = $this->security->xss_clean($data);
@@ -1495,7 +1503,8 @@ class Admin_Controller extends CI_Controller
         }
     }
 
-    public function footer_ct_edit(){
+    public function footer_ct_edit()
+    {
         $ifFooterContactEdit = $this->Admin_Model->xl_return_rows("footer_contact", "id");
         if ($ifFooterContactEdit == (-1)) {
             redirect(base_url("Footer_Ct_Create"));
@@ -1505,19 +1514,20 @@ class Admin_Controller extends CI_Controller
         }
     }
 
-    public function footer_ct_edit_act($id) {
-        $title      = $this->input->post('title');
-        $location   = $this->input->post('location');
-        $phone      = $this->input->post('phone');
-        $email      = $this->input->post('email');
+    public function footer_ct_edit_act($id)
+    {
+        $title = $this->input->post('title');
+        $location = $this->input->post('location');
+        $phone = $this->input->post('phone');
+        $email = $this->input->post('email');
 
         if (!empty($title) && !empty($location) && !empty($phone) && !empty($email)) {
 
             $data = [
-                "title"     => $title,
-                "location"  => $location,
-                "phone"     => $phone,
-                "email"     => $email
+                "title" => $title,
+                "location" => $location,
+                "phone" => $phone,
+                "email" => $email
             ];
 
             $id = $this->security->xss_clean($id);
@@ -1530,12 +1540,14 @@ class Admin_Controller extends CI_Controller
         }
     }
 
-    public function footer_ct_delete($id) {
+    public function footer_ct_delete($id)
+    {
         $this->Admin_Model->a_footer_ct_delete($id);
         redirect(base_url("Footer_Ct_Create"));
     }
 
-    public function fast_connect_create() {
+    public function fast_connect_create()
+    {
         $ifFooterContactCreate = $this->Admin_Model->xl_return_rows("fast_connect", "id");
         if ($ifFooterContactCreate == (-1)) {
             $this->load->view('admin/footer/fast_connect_create');
@@ -1544,24 +1556,25 @@ class Admin_Controller extends CI_Controller
         }
     }
 
-    public function fast_connect_create_act() {
-        $title               = $this->input->post('title');
-        $first_title         = $this->input->post('first_title');
-        $first_title_link    = $this->input->post('first_title_link');
-        $second_title        = $this->input->post('second_title');
-        $second_title_link   = $this->input->post('second_title_link');
-        $third_title         = $this->input->post('third_title');
-        $third_title_link    = $this->input->post('third_title_link');
+    public function fast_connect_create_act()
+    {
+        $title = $this->input->post('title');
+        $first_title = $this->input->post('first_title');
+        $first_title_link = $this->input->post('first_title_link');
+        $second_title = $this->input->post('second_title');
+        $second_title_link = $this->input->post('second_title_link');
+        $third_title = $this->input->post('third_title');
+        $third_title_link = $this->input->post('third_title_link');
 
         if (!empty($title) && !empty($first_title) && !empty($first_title_link) && !empty($second_title) && !empty($second_title_link) && !empty($third_title) && !empty($third_title_link)) {
             $data = [
-                'title'              => $title,
-                'first_title'        => $first_title,
-                'first_title_link'   => $first_title_link,
-                'second_title'       => $second_title,
-                'second_title_link'  => $second_title_link,
-                'third_title'        => $third_title,
-                'third_title_link'   => $third_title_link
+                'title' => $title,
+                'first_title' => $first_title,
+                'first_title_link' => $first_title_link,
+                'second_title' => $second_title,
+                'second_title_link' => $second_title_link,
+                'third_title' => $third_title,
+                'third_title_link' => $third_title_link
             ];
             $data_cleaned = $this->security->xss_clean($data);
             $this->Admin_Model->a_fast_connect_create($data_cleaned);
@@ -1571,7 +1584,8 @@ class Admin_Controller extends CI_Controller
         }
     }
 
-    public function fast_connect_edit() {
+    public function fast_connect_edit()
+    {
         $ifFooterContactEdit = $this->Admin_Model->xl_return_rows("fast_connect", "id");
         if ($ifFooterContactEdit == (-1)) {
             redirect(base_url("Fast_Connect_Create"));
@@ -1581,24 +1595,25 @@ class Admin_Controller extends CI_Controller
         }
     }
 
-    public function fast_connect_edit_act() {
-        $title               = $this->input->post('title');
-        $first_title         = $this->input->post('first_title');
-        $first_title_link    = $this->input->post('first_title_link');
-        $second_title        = $this->input->post('second_title');
-        $second_title_link   = $this->input->post('second_title_link');
-        $third_title         = $this->input->post('third_title');
-        $third_title_link    = $this->input->post('third_title_link');
+    public function fast_connect_edit_act()
+    {
+        $title = $this->input->post('title');
+        $first_title = $this->input->post('first_title');
+        $first_title_link = $this->input->post('first_title_link');
+        $second_title = $this->input->post('second_title');
+        $second_title_link = $this->input->post('second_title_link');
+        $third_title = $this->input->post('third_title');
+        $third_title_link = $this->input->post('third_title_link');
 
         if (!empty($title) && !empty($first_title) && !empty($first_title_link) && !empty($second_title) && !empty($second_title_link) && !empty($third_title) && !empty($third_title_link)) {
             $data = [
-                'title'              => $title,
-                'first_title'        => $first_title,
-                'first_title_link'   => $first_title_link,
-                'second_title'       => $second_title,
-                'second_title_link'  => $second_title_link,
-                'third_title'        => $third_title,
-                'third_title_link'   => $third_title_link
+                'title' => $title,
+                'first_title' => $first_title,
+                'first_title_link' => $first_title_link,
+                'second_title' => $second_title,
+                'second_title_link' => $second_title_link,
+                'third_title' => $third_title,
+                'third_title_link' => $third_title_link
             ];
             $data_cleaned = $this->security->xss_clean($data);
             $this->Admin_Model->a_fast_connect_edit($this->Admin_Model->xl_return_rows("fast_connect", "id"), $data_cleaned);
@@ -1608,17 +1623,20 @@ class Admin_Controller extends CI_Controller
         }
     }
 
-    public function fast_connect_delete($id) {
+    public function fast_connect_delete($id)
+    {
         $this->Admin_Model->a_fast_connect_delete($id);
         redirect(base_url("Fast_Connect_Create"));
     }
 
-    public function fast_connect_details($id) {
+    public function fast_connect_details($id)
+    {
         $data['fast_connect_details'] = $this->Admin_Model->a_fast_connect_details_single($id);
         $this->load->view('admin/footer/fast_connect_details', $data);
     }
 
-    public function news_create() {
+    public function news_create()
+    {
         $ifFooterContactCreate = $this->Admin_Model->xl_return_rows("news", "id");
         if ($ifFooterContactCreate == (-1)) {
             $this->load->view('admin/footer/news_create');
@@ -1627,20 +1645,21 @@ class Admin_Controller extends CI_Controller
         }
     }
 
-    public function news_create_act() {
-        $title       = $this->input->post('title');
-        $twitter     = $this->input->post('twitter');
-        $facebook    = $this->input->post('facebook');
-        $youtube     = $this->input->post('youtube');
-        $instagram   = $this->input->post('instagram');
+    public function news_create_act()
+    {
+        $title = $this->input->post('title');
+        $twitter = $this->input->post('twitter');
+        $facebook = $this->input->post('facebook');
+        $youtube = $this->input->post('youtube');
+        $instagram = $this->input->post('instagram');
 
         if (!empty($title) && !empty($twitter) && !empty($facebook) && !empty($youtube) && !empty($instagram)) {
             $data = [
-                'title'      => $title,
-                'twitter'    => $twitter,
-                'facebook'   => $facebook,
-                'youtube'    => $youtube,
-                'instagram'  => $instagram
+                'title' => $title,
+                'twitter' => $twitter,
+                'facebook' => $facebook,
+                'youtube' => $youtube,
+                'instagram' => $instagram
             ];
             $data_cleaned = $this->security->xss_clean($data);
             $this->Admin_Model->a_news_create($data_cleaned);
@@ -1650,7 +1669,8 @@ class Admin_Controller extends CI_Controller
         }
     }
 
-    public function news_edit() {
+    public function news_edit()
+    {
         $ifFooterContactEdit = $this->Admin_Model->xl_return_rows("news", "id");
         if ($ifFooterContactEdit == (-1)) {
             redirect(base_url("News_Create"));
@@ -1660,20 +1680,21 @@ class Admin_Controller extends CI_Controller
         }
     }
 
-    public function news_edit_act() {
-        $title       = $this->input->post('title');
-        $twitter     = $this->input->post('twitter');
-        $facebook    = $this->input->post('facebook');
-        $youtube     = $this->input->post('youtube');
-        $instagram   = $this->input->post('instagram');
+    public function news_edit_act()
+    {
+        $title = $this->input->post('title');
+        $twitter = $this->input->post('twitter');
+        $facebook = $this->input->post('facebook');
+        $youtube = $this->input->post('youtube');
+        $instagram = $this->input->post('instagram');
 
         if (!empty($title) && !empty($twitter) && !empty($facebook) && !empty($youtube) && !empty($instagram)) {
             $data = [
-                'title'      => $title,
-                'twitter'    => $twitter,
-                'facebook'   => $facebook,
-                'youtube'    => $youtube,
-                'instagram'  => $instagram
+                'title' => $title,
+                'twitter' => $twitter,
+                'facebook' => $facebook,
+                'youtube' => $youtube,
+                'instagram' => $instagram
             ];
             $data_cleaned = $this->security->xss_clean($data);
             $this->Admin_Model->a_news_edit($this->Admin_Model->xl_return_rows("news", "id"), $data_cleaned);
@@ -1683,12 +1704,14 @@ class Admin_Controller extends CI_Controller
         }
     }
 
-    public function news_details($id) {
+    public function news_details($id)
+    {
         $data['news_single'] = $this->Admin_Model->a_news_details($id);
         $this->load->view('admin/footer/news_details', $data);
     }
 
-    public function news_delete($id) {
+    public function news_delete($id)
+    {
         $this->Admin_Model->a_news_delete($id);
         redirect(base_url("News_Create"));
     }

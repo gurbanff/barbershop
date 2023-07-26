@@ -95,7 +95,6 @@
                     <div class="col-sm-4 mb-3 mb-sm-0">
                         <label for="Position"><b>Position</b></label>
                         <select name="position" id="Position" class="form-control">
-                            <option value="">-SELECT-</option>
                             <?php foreach ($get_position_single as $item) { ?>
                                 <option value="<?php echo $item['id']; ?>"><?php echo $item['p_name_en']; ?></option>
                             <?php } ?>
@@ -153,9 +152,9 @@
                     <div class="col-sm-3 mb-3 mb-sm-0">
                         <label for="Status"><b>Status</b></label>
                         <select name="Status" id="Status" class="form-control">
-                            <option value="">-SELECT-</option>
-                            <option <?php if($single_data['s_status'] == 'Active'){ echo "SELECTED";} ?> value="Active">Active</option>
-                            <option <?php if($single_data['s_status'] == 'Deactive'){ echo "SELECTED";} ?> value="Deactive">Deactive</option>
+                            <?php foreach ($get_status_single as $item) { ?>
+                                <option value="<?php echo $item['id']; ?>"><?php echo $item['status']; ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                     

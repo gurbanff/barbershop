@@ -22,11 +22,12 @@ class Admin_Model extends CI_Model{
         $this->db->insert('staff', $data);
     }
 
-    public function get_all_data()
+    public function get_all_select_data()
     {
         return $this->db
             ->order_by('s_id', 'DESC')
             ->join('staff_position','staff_position.id = staff.s_position', 'left')
+            ->join('staff_status', 'staff_status.id = staff.s_status', 'left')
             ->get('staff')
             ->result_array();
     }
@@ -38,6 +39,10 @@ class Admin_Model extends CI_Model{
 
     public function a_get_position_single() {
         return $this->db->get("staff_position")->result_array();
+    }
+
+    public function a_get_status_single() {
+        return $this->db->get("staff_status")->result_array();
     }
 
     public function a_position_select_security($position) {
